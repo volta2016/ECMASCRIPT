@@ -160,6 +160,7 @@ console.log(generatorHello.next().value);
 console.log(generatorHello.next().value); 
 console.log(generatorHello.next().value); 
 
+//fibonacci example 01
 function* fibonacci(){
   var fn1 = 1;
   var fn2 = 1;
