@@ -25,6 +25,7 @@ const obj1 = {
     country: 'MX'
 }
 
+
 console.log(obj1);
 
 /**
@@ -32,7 +33,7 @@ console.log(obj1);
  */
 const helloWorld = () => {
   return new Promise((resolve, reject) => {
-    true
+    (true)
       ? setTimeout(() => {
           resolve('Hello World!');
         }, 3000)
@@ -119,3 +120,10 @@ console.log(Object.fromEntries(entries));
 let mySymbol = 'My symbol';
 let symbol = Symbol(mySymbol);
 console.log(symbol.description);
+
+
+//implementacion de versiones de ES
+// Async await se agrego en Emma script 8
+// Multilinea , es de ecmascritp6
+
+// trimStart() ES10

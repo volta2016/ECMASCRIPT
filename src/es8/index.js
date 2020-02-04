@@ -30,16 +30,16 @@ const string = 'hello';//
 //como podemos antenponer una cadena vacía o elementos a este string
 console.log(string.padStart(8, 'hi '));//primero el valor de caracteres, luego los caracteres 
 console.log(string.padEnd(12, ' -----'));
-console.log('food'.padEnd(12, ' -----'));
+console.log('food'.padEnd(12, ' ----'));
 
-//tranding , 
+//tranding ,
 const obj = {
     name: 'Kyo',
 }
 
 
 // Async Await
-//aplicado con if ternario
+//aplicado con if ternario cae en primer resultado true podemos modificar el valor 
 //=> async await
 const helloWorld = () => {
     return new Promise((resolve, reject) => {
