@@ -91,7 +91,7 @@ let hello = 'Hello World      ';
 console.log(hello);
 console.log(hello.trimEnd());
 
-
+//Optional Catch Binding
 try {
 
 } catch (error) {

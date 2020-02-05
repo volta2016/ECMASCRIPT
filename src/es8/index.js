@@ -1,5 +1,6 @@
 // Object.entries 
 
+// "Trailing commas" ES8
 const data = {
     frotend: 'Oscar',
     backend: 'Isabel',
