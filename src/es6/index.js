@@ -119,11 +119,20 @@ const square = num => nume * num;//esta es una funcion la cual recibe un valor l
  helloPromise() 
     .then(response => console.log(response))//nos permite obtener esa respuesta
     .then(() => console.log('hola'))
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+
+// Promesas con más de un then
+helloPromise()
+    .then(r => `${r} 2020`) // añadir texto al response y devolverlo
+    .then(r => `${r} hoy`) // añadir más texto al response anterior y devolverlo
+    .then(r => console.log(r)) // agregar información al response
+    //.then(console.log()) lo mismo de arriba pero más corto xd
+
+
 
 //Clases, Módulos y Generadores
 
-class calculator {
+class calculator { //ecma 6
     constructor() {
         this.valueA  = 0;
         this.valueB = 0;
@@ -137,6 +146,19 @@ class calculator {
 
 const calc = new calculator();
 console.log(calc.sum(2,2));
+
+// crear instancias con constructor desde un comienzo
+class CalculatorDynamic{
+    constructor(a = 1, b = 2){
+        this.valueA = a;
+        this.valueB = b;
+    }
+
+    sumar = () => this.valueA + this.valueB;
+};
+
+const calcDynam = new CalculatorDynamic(5, 6);
+console.log(calcDynam.sum());
 
 //para traerme el modulo
 import { hello } from '/.module';
