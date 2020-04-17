@@ -54,7 +54,7 @@ let team1 = ['Oscar', 'Kyo', 'Román']
 let team2 = ['Valeria', 'Yesica', 'Camila']
 
 //es6
-let educution = ['David', ..team1, ...team2]
+let educution = ['David', ...team1, ...team2]
 
 console.log(educution);
 
@@ -210,3 +210,30 @@ console.log(secuencia.next(true).value); // 1
 console.log(secuencia.next().value);     // 1
 console.log(secuencia.next().value);     // 2
 console.log(secuencia.next().value);     // 3
+
+//forEach
+//estructura base 
+array.forEach(element => {
+    
+});
+//para que corra este programa debo tener una lista en el dom
+const bloques = document.querySelectorAll('li');
+
+bloques.forEach(BLOQUE => {
+    bloques.innerHTML = 'prueba';
+    console.log(bloque);
+})
+
+var miArray = [2,3,4,5,6,8,10];
+miArray.forEach((valor,indice,array){
+    console.log(`En el índice ${indice} hay este valor ${valor}`)
+})
+
+let numeros = [2,3,6,7]
+numeros.forEach((element,index, array) => {
+    array[index] = Math.pow(element, 2)//lo que hicimos fue sustituir cada una de las posiciones x el cuadrado
+    //del elemento que esta en esa posición
+    console.log(element)
+    console.log(index)
+    console.log(array)
+})
