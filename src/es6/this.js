@@ -3,6 +3,7 @@ El hoisting ¿que es el hoisting?
 Es el comportamiento por defecto de Javascript de mover todas las declaraciones
 de funciones y variables declaradas con VAR al inicio de SCOPE
 */
+
 console.log(this);
 
 // function callThis() {
