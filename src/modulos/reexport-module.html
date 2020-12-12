@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reexport module</title>
+</head>
+<body>
+  <script type="module">
+    import { JuegoDeDados, lados } from './juegodedados.js'
+    const juego = new  JuegoDeDados()
+    console.log(`valor del dado:  ${juego.sumaDados()}`)
+    console.log(`lados del dado:  ${lados}`)
+  </script>
+</body>
+</html>
