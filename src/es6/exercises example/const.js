@@ -8,6 +8,9 @@ const DIEZ = 10;
 DIEZ = 5;
 console.log(DIEZ)// Imprime Uncaught TypeError: Assignment to constant variable
 
+// por lo general se ocupan para endpoint trabajando con api ya que no se modifica o 
+// puedes pasarle nuevas varieble de forma dinamica a URL con template string
+const URL = 'https://pokeapi.co/api/v2/ability/?limit=20&offset=20';
 
 const PI;
 PI = 3.141592653589793;//Imprime Missing initializer in const declaration
