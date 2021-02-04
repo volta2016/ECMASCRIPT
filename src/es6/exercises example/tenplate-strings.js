@@ -1,3 +1,12 @@
+// Plantillas de cadenas de texto
+// Los template string son una forma más fácil de crear:
+
+// * Cadenas con variables dentro (interpolación).
+// * Generar cadenas multilínea.
+// * Ejecutar expresiones, funciones y etiquetados.
+
+
+
 let greeting  = 'Hola soy un template string';
 console.log(greeting);
 
@@ -32,3 +41,4 @@ let ol = `
 const results = window.root.innerHTML = ol;
 console.log(ol);
 console.log(results);
+
