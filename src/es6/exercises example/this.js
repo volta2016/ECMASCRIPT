@@ -51,7 +51,7 @@ console.log(zelda);
 // console.log(masGrandeQue20(12)); 
 
 
-//La solución al problema de `this` Ahora
+//La solución al problema de `this` Ahora es6
 function Persona(nombre) {
   //El constructor Persona() define `this` como una instancia de él mismo
   this.nombre = nombre,
