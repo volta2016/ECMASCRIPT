@@ -39,6 +39,8 @@ let nombreAtributo = 'nombre',
   nombreOtroAtributo = 'ad',
   nombreMetodo = 'ladrar';
 
+
+
 const dog = {
   [nombreAtributo] : 'Dalto',
   [`ed${nombreOtroAtributo}`] : 4,
