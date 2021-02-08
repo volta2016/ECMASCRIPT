@@ -18,7 +18,7 @@ function() {
 // como la vemos en el ejemplo, seria que una función por parametro reciba otra función y la 
 // auto ejecuta por ejemplo:
 
-// un Listener cuando aplicas 
+// cuando aplicas un Listener 
 
 button.addEventListener('click', function() {
   // lógica
@@ -45,7 +45,7 @@ const mesagge = () => {
 mesagge()
 
 // ahora como aplicas la funcionalidad que tiene myFunction que es un funcion
-// normal se replique en una arrow function o funcion anónima de declararla a invocarla
+// normal, se replique en una arrow function o funcion anónima de declararla a invocarla
 // para esto tenemos que entrar al mundo de las expresiones
 
 /*Expresiones 
@@ -80,10 +80,11 @@ const myFunction = () => {
 
 
 // Retorno en una linea
-// cuando quieres retornar en un valor lo puedes hacer en una sola linea
+// cuando quieres retornar un valor lo puedes hacer en una sola linea
 // no coloco las llaves, ni el return solamente el valor o la operación
 // que va retornar
 // ¿ puedo colocar un for o un if ? no puedo
+
 // 2
 const myFunction = () => 'esta es un arrow function retorno en una linea'
 
@@ -120,7 +121,7 @@ function name() {
 
 // hoisting o elevamiento lo que va hacer en caso de las funciones normales, va tomar esas declaraciones
 // y las va poner al inicio del programa, las va elevar. Tu función que esta debajo del llamado realmente la
-// va a mover a la parte superior por eso funciona eso no se ve el code ocurre por detrás
+// va a mover a la parte superior por eso funciona eso no se ve el code, ocurre por detrás.
 
 // > ::const o la misma funcion en version arrow function no hace hositing::
 name()
@@ -196,7 +197,7 @@ function time(){
 new time()
 
 // el mismo self hace la invocación dentro del intervalo
-//  como se mejoro esto gracias a la arow function deja pasar al contexto del this
+// como se mejoro esto gracias a la arow function deja pasar al contexto del this
 // superior entonces si combinamos time con una función normalita que declara su contexto
 // su this y luego al intervalo le pasamos una función pero que sea una arrow function,
 // pero como deja pasar al this superior this va hacer invocación al this de time :)
@@ -212,9 +213,10 @@ function time() {
 }
 
 new time()
+console.log(new time())
 
 // ambos mundo puedes convivir si los entiendes
-
+// this.seg = 0 dentro de time delclara su propio contexto su this
 // en el browser this es window 
 
 // otro ejemplo esto es algo que nos ocurre en browser todo el tiempo

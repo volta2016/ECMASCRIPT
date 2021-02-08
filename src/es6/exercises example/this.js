@@ -11,14 +11,14 @@ function Persona(nombre) {
   this.nombre = nombre,
   this.edad = 0;
 
-  setInterval(() => {
-    //El constructor Persona() define `this` como una instancia de él mismo
+  setInterval(function()  {
+    //La función anónima define `this` como una instancia de ella misma
     this.edad++;
   }, 1000);
 }
 
 let zelda = new Persona('Zelda');
-console.log(zelda);
+console.log(zelda);//Imprime la edad en 0 por cada segundo que pasa no le suma
 
 //La solución al problema de `this` Antes
 function Persona(nombre) {
@@ -27,16 +27,15 @@ function Persona(nombre) {
   self.nombre = nombre;
   self.edad = 0
 
-  setInterval(() => {
+  setInterval(function() {
     //La función anónima define su propio `this` pero el valor que aumenta es edad del `this` de Persona()
     self.edad++;
-    self.edad++
   }, 1000);
 }
 
 
 let zelda = new Persona('Zelda');
-console.log(zelda);
+console.log(zelda);//Imprime el valor de edad más uno por cada segundo que pasa
 
 
 
@@ -65,3 +64,5 @@ function Persona(nombre) {
 let zelda = new Persona('Zelda')
 console.log(zelda); //Imprime el valor de edad más uno por cada segundo que pasa
 console.log(zelda.edad); //Imprime la edad
+
+// La solución es mezclar los 2 mundo conociendo como se compoarta this dentro de cada función 😄
