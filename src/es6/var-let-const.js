@@ -44,8 +44,8 @@ foo();
 console.log(i); // global
 
 /*Ahora hay dos variables con el mismo identificador pero en ámbitos 
-diferentes y con referencias en memoria diferentes. La variable i 
-dentro de la función tiene un scope reducido al ámbito de la función 
+diferentes y "con referencias en memoria diferentes"
+La variable i dentro de la función tiene un scope reducido al ámbito de la función 
 y no sobreescribe la variable global. 
 
 En resumen, la declaración con var define una variable en el ámbito 
@@ -140,7 +140,7 @@ con var.:::*/
 
 let i = 0;
 function foo() {
-  i = 1;
+  i = 1;// se re asigna se puede acceder a una var global pero no de afuera acceder a su scope local
   let j = 2;
   if (true) {
     console.log(i);
@@ -154,7 +154,7 @@ que a su vez está dentro de una función, la variable pertenece
 solo a ese bloque: */
 
 function foo() {
-  let i = 0;
+  let i = 0;// solo en el scope de la function
   if(true) {
       let i = 1; // Sería otra variable i solo para el bloque if
       console.log(i); // 1
@@ -185,7 +185,7 @@ accidental al declarar variables sin ensuciar el scope superior. */
 // let previene la sobreescritura de variables, const directamente 
 // prohíbe la reasignación de valores (const viene de constant).
 
-// Con let una variable puede ser reasignada::::
+//:::Con let una variable puede ser reasignada::::
 
 function foo() {
   let i = 0;
@@ -202,7 +202,8 @@ constante se obtendrá un error tipo TypeError:*/
 const i = 0;
 i = 1; // TypeError: Assignment to constant variable
 
-/*Pero que no se puedan reasignar no significa que sean inmutables. Si el valor de una variable constante es «algo» mutable, como un array o un objeto, se pueden cambiar los 
+/*Pero que no se puedan reasignar no significa que sean inmutables. Si el valor de una 
+variable constante es «algo» mutable, como un array o un objeto, se pueden cambiar los 
 valores de sus elementos.
 
 Por ejemplo, una variable constante se puede asignar a un 

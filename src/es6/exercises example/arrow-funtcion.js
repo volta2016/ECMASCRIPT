@@ -47,6 +47,8 @@ console.log(greeting());//Imprime Hola a tod@s
 let date = new Date(),
     hours = date.getHours();
 
+  
+
 let greeting = function(hr) {
   if (hr <= 5) {
     return 'estamos cerca de las 5'
@@ -94,4 +96,6 @@ numbers.forEach((num) => {
   console.log(num);//Imprime el número del index del array
   console.log(num * 10);//Imprime el número dek index que itera por 10
 });
+
+// foreach() no muta/modifica el array desde el que es llamado (aunque callback, si se invoca, podría hacerlo)
 
