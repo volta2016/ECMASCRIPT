@@ -57,6 +57,7 @@ function Persona(nombre) {
   this.edad = 0
 
   setInterval(() => {
+    //`this` hace referencia al objeto Persona()
     this.edad++
   }, 1000);
 }
