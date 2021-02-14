@@ -1,5 +1,27 @@
 // :::Rest Operator:::
 
+// Los parámetros Rest son una forma de utilizar parámetros virtualmente infinitos, se definen agregando 
+// ... adelante del nombre del parámetro rest, éste tiene que ser siempre el último parámetro de la función.
+
+
+function sumar(a,b, ...c) {
+  let resulatdo = a + b;
+  c.forEach(element => {
+    resulatdo += element
+  })
+  console.log(resulatdo)
+}
+
+sumar(1,2); //Imprime 3
+sumar(1,2,3); //Imprime 6
+sumar(1,2,3,4); //Imprime 10
+sumar(1,2,3,4,5); //Imprime 15
+
+
+
+
+
+
 function sum(...numbers) {
   let results = 0;
   for (let i = 0; i < numbers.length; i++) {

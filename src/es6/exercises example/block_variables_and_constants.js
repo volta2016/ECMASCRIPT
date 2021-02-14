@@ -10,10 +10,10 @@ let x = 'Hola naruto';
 
 if(true) {
    let x = 'hola kenshin';
-  console.log(x); // Imprime en consola Hola Jon
+  console.log(x); // Imprime en consola Hola Kenshin
 }
 
-console.log(x); // Imprime en consola Hola kEnAi
+console.log(x); // Imprime en consola Hola Naruto
 
 
 for(let i = 0; i < 5; i++) {
