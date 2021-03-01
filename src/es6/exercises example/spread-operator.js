@@ -53,3 +53,43 @@ console.log(groupTwoPerson);
 // ::resumen:: 
 // - spread oprator desempaqueta o expande, lo vas econtrar
 // - llamadas a funciones se encuentra  en el valor de una declaracion del lado derecho
+
+// ::English
+// Example with object 
+
+const user = {
+  name: "Kyo",
+  age: 28,
+  isEnglishSpeaker: true
+};
+
+const firstUser = {
+  name: user.name,
+  age: user.age,
+  isEnglishSpeaker: user.isEnglishSpeaker
+};
+
+// Copy all of user's properties into secondUser 
+const secondUser = {
+  ...user  
+};
+
+const user = {
+  name: "Jin",
+  lastname: "Katana",
+  age: 19
+}
+
+const moreUserIfo = {
+  region: "Shibuya",
+  country: "Japón",
+}
+
+const tool = {
+  ...user,
+  ...moreUserIfo,
+  computer: "Toshiba",
+  system: "Linux Centos"
+}
+
+console.log(tool)

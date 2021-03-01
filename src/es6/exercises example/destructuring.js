@@ -54,3 +54,30 @@ let data = {
 let {correo: email, telefono: cel } = data;
 
 console.log(email, cel);
+
+
+// ::English
+/* The standard way to access properties from an object is using the dot notation. 
+An even more convenient approach, however, is object destructuring. It allows us to extract 
+properties as individual variables of the same name from a given object.
+
+It looks somewhat like you're writing an object in reverse, which is what makes the process intuitive. 
+It's much nicer to use than having to use the object name multiple times to access each time you want to grab a value from it.
+*/
+
+const user = {
+  name: "Kyo",
+  age: 28,
+  isEnglishSpeaker: true,
+  region: "Shibuya 渋谷区"
+};
+ 
+// Dot property access
+// const name = user.name;
+// const age = user.age;
+ 
+// Object destructuring
+const { age, name, isEnglishSpeaker: knowsEnglish, region} = user;
+// Use ':' to rename a value as you destructure it
+
+console.log(knowsEnglish, region); // true Shibuya 渋谷区 
