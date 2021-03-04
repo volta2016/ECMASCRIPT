@@ -1,5 +1,5 @@
 // **Objetos Literales**
-Atajos en la escritura
+// Atajos en la escritura
 
 // antes 
 
@@ -51,3 +51,21 @@ const dog = {
 
 console.log(dog); //Imprime Object {nombre: "kEnAi", edad: 4}
 dog.ladrar(); //Manda alerta
+
+
+// Nombres de atributos y métodos calculados (o computados):
+
+let nombreAtributo = 'nombre',
+  nombreOtroAtributo = 'ad',
+  nombreMetodo = 'ladrar';
+
+const perro = {
+  [nombreAtributo] : 'kEnAi',
+  [`ed${nombreOtroAtributo}`] : 4,
+  [nombreMetodo]() {
+    alert('guau guau!!!');
+  }
+};
+
+console.log(perro); //Imprime Object {nombre: "kEnAi", edad: 4}
+perro.ladrar(); //Manda alerta

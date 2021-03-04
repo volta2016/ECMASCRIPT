@@ -27,9 +27,9 @@ console.log(nameGreeting);
 
 console.log(`hola ${name}, tienes ${10 + 18} años`)
 
-const seasons = ['Primavera', 'Verano', 'Otoño', 'Invierno'];
+let seasons = ['Primavera', 'Verano', 'Otoño', 'Invierno'];
 
-let ol = `
+ol = `
   <ol style="color: purple;">
     ${seasons.map(season => {
       return `<li>${season}</li>`
@@ -38,7 +38,7 @@ let ol = `
   </ol>
 `
 
-const results = window.root.innerHTML = ol;
+const results = window.body.innerHTML = ol;
 console.log(ol);
 console.log(results);
 
