@@ -26,8 +26,7 @@ adivinarNumero()
   .then(num => console.log(num));
   .catch(error => console.log(error));
 
-
-  // ::Promesas en el servidor
+// ::Promesas en el servidor
 
   const fs = require('fs'),
   file = './nombres.txt',
