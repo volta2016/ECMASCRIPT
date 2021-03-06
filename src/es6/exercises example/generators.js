@@ -37,3 +37,48 @@ console.log(gen.next().value); //Imprime Esta otra, en la tercera
 console.log(gen.next().value); //Imprime Esta otra, saldrá en la cuarta solo si te llamas Jonathan
 console.log(gen.next());
 
+
+// :::Más ejemplos con Generadores:
+
+class LoremIpsum {
+  constructor( text ) {
+    this._text = text;
+  }
+
+  *words() {
+    const re = /\S+/g;
+    let match;
+
+    while( match = re.exec( this._text ) ){
+      yield match[0];
+    }
+  }
+}
+
+const lorem = new LoremIpsum('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde voluptatem eveniet ipsum in similique maxime sunt eaque veritatis sapiente. Fuga minus, non cumque deleniti consequatur. Odit reprehenderit non fugit cum!');
+
+for ( let word of lorem.words() ) {
+  console.log( word );
+}
+
+class Usuarios {
+  constructor( gente ) {
+    this._gente = gente;
+  }
+
+  *alias() {
+    for ( let persona of this._gente ) {
+      yield ( persona.sexo === 'H' ) ? `Sr. ${persona.nombre}` : `Sra. ${persona.nombre}`;
+    }
+  }
+}
+
+const gente = new Usuarios([
+  { sexo: 'H', nombre: 'Jon' },
+  { sexo: 'M', nombre: 'Irma' }
+]);
+
+for ( let persona of gente.alias() ){
+  console.log( persona );
+}
+
