@@ -32,3 +32,4 @@ Debido a que los argumentos [0] () es una invocación de método de devolución 
 llamada en el objeto de argumentos, esto dentro de la devolución de llamada es igual a argumentos. 
 Como resultado, this.length dentro de callback () es lo mismo que argument.length, que es 3.
 */
+

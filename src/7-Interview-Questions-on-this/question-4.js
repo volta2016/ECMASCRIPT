@@ -3,7 +3,7 @@
 //How can you call logMessage function so that it logs "Hello, World!"?
 
 
-/*const object = {
+const object = {
   message: 'Hello, World!'
 };
 
@@ -12,7 +12,7 @@ function logMessage() {
   console.log(this.message); // "Hello, World!"
 }
 
-logMessage();*/
+logMessage();
 
 /* bueno nos dice a ver si eres capas que este this console.log(this.message) sea el del object.
 Bueno hay varias formas de resolver esto:
@@ -33,7 +33,8 @@ logMessage.bind(object)();*/
 
 
 /*2- Tendríamos el apply y tendríamos el .call 
-la diferencia entre call y apply que son casi o mismo la diferencia es que call acepta una lista de argumetos mientras que apply acepta un simple array array con los arguentos
+la diferencia entre call y apply que son casi o mismo la diferencia es que call acepta una 
+lista de argumetos mientras que apply acepta un simple array array con los arguentos
 */
 
 const object = {
@@ -46,8 +47,9 @@ function logMessage(parametroA, parametroB) {
 }
 
 logMessage.apply(object, ['facebook', 'instagram']);
-//logMessage.apply(object, 'facebook', 'instagram';
-//logMessage.apply(object)('facebook', 'instagram');
+//logMessage.call(object, 'facebook', 'instagram';
+//logMessage.bind(object)('facebook', 'instagram');
+// Esta serian las 3 formas
 
 /* si ahora llamo a call va detectar al parametroA directamente y el b como undefined*/
 
