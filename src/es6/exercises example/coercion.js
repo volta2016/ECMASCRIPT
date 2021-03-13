@@ -11,6 +11,7 @@ const valueTwo = 9;
 const suma = valueOne + valueTwo;
 
 console.log(suma);
+console.log(typeof suma);
 
 
 // En el ejemplo anterior, JavaScript ha coercido el 9 de nùmero a cadena de texto y luego ha concatenado 
@@ -29,3 +30,12 @@ const newNumber = '520'
 aNumber = Number(newNumber)
 
 console.log(aNumber)
+
+
+true  + false // 1
+"2"  - 3 // -1
+Number([""]) // 0
+String(-0) // 0 UPS!
+
+a = "2"
+a++ // 2
