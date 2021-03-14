@@ -143,7 +143,6 @@ for (const property in object) {
 // "b: 2"
 // "c: 3"
 
-'
 
 /*¿Por qué usar for...in?
 Dado que for...in está construido para iterar propiedades de objeto, no se recomienda 
