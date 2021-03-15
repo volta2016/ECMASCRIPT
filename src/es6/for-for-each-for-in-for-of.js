@@ -135,7 +135,7 @@ names.nivel = 10 podemos agregar propiedades de esta forma
 const object = { a: 1, b: 2, c: 3 };
 
 for (const property in object) {
-    console.log(`${property}: ${object[property]}`)
+    console.log(`${property}: ${object[value]}`)
 }
 
 // expected output:
