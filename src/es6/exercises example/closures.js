@@ -27,8 +27,7 @@ f();
 // Esta combinación de cosa es lo que se conoce como un closures. Nostros con los closures vamos
 // a poder realizar composición ya sea de objeto o también de funciones para poder ir modificando
 // el comportamiento que queremos que tenga en este caso nuestras funciones. 
-/* vamos hacer un especie de crud que nos permita a nostros conectarnos a distintas APIS 
-para eso nostros vamos a necesitar isomorfic fetch, te permite utilizar la API  de fetch, también
-en node
 
-*/
+
+
+
