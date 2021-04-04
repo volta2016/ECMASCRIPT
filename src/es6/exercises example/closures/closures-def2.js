@@ -8,10 +8,10 @@ incluso cuando la función padre dejo de existir después de su invocación.
 */
 
 function exterior() {
-	const mensaje = "Hola mundo";//local var
-  // closure
+	const mensaje = "Hola mundo"; //local var
+	// closure
 	function interior() {
-    //closure
+		//closure
 		return mensaje;
 	}
 	return interior;
@@ -36,4 +36,16 @@ En javascript los closures son creados con toda la información del entorno dond
 La función foo tiene una referencia al closure interior, el que fue creado durante la ejecución 
 de la función exterior. La función interior (el closure) mantiene la información de su ambiente: 
 La variable mensaje.
-*
+*/
+
+function exterior() {
+	const mensaje = "hola mundo";
+
+	function interior() {
+		console.log(mensaje);
+	}
+	return interior;
+}
+
+const foo = exterior();
+foo();

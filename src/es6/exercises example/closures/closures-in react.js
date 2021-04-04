@@ -29,7 +29,10 @@ incrementar(); // logs 1
 incrementar(); // logs 2
 decrementar(); // logs 1
 // No funciona
-log();
+log(); // logs "El valor actual es 0"
+
+//scope es statico
+//no actualiza el valor original de value
 
 //Claramente algo extraño pasa aquí, la función log nos muestra que el
 //valor es 0 cuando sabemos que debe ser 1.
@@ -62,7 +65,7 @@ function log() {
 que le indica que "valores observar" para ejecutar el closure definido.
 
 Si no indicas ningún valor en el arreglo de dependencias el closure usado como primer 
-argumento se "cerrar" sobre los valores existentes en el primer render.*/
+argumento se "cierra" sobre los valores existentes en el primer render.*/
 
 /*Otro caso es con el hook useState. Este hook retorna una tupla con el valor del 
 estado y una función que permite actualizar el estado.*/
