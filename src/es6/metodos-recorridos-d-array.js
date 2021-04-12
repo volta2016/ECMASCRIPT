@@ -21,16 +21,16 @@ let articulos = [
 // .map() > transform
 
 // sintaxis
-let nuevo_array = arr.map(function callback(currentValue, index, array) {
-    // Elemento devuelto de nuevo_array
-}[, thisArg])
+// let nuevo_array = arr.map(function callback(currentValue, index, array) {
+//     // Elemento devuelto de nuevo_array
+// }[, thisArg])
 
 //el param array - nos sirve si la función transformadora se encuentra en otro archivo o modulo 
 // y necesitamos acceder al array original solo para leerlo
 
 //el primer método va ser map me va generar un nuevo array, acá como parámetro le coloco
 //el articulo que quiero mapear, articulo va ser el parámetro que va iterar en cada objeto.
-//con esto le estoy pidiendo que me regrese de todos los artículos el nombre el nombre de los
+//con esto le estoy pidiendo que me regrese de todos los artículos el nombre, el nombre de los
 //artículos
 //mapea todo el contenido del array y nos trae justo lo que nosotros estamos buscando que es el nombre
 //de los artículos
@@ -65,9 +65,10 @@ const productosConDescuento = productos.map(function(producto) {
         precio: producto.precio * 0.9 
     }//objeto nuevo compiamos las prop del original pero pisando una prop
 })
+console.log(productosConDescuento);
 
 // error
-const productosConDescuento = productos.map(function(produccto) {
+const productosConDescuento = productos.map(function(producto) {
     if(producto.precio < 100) return producto;
 
     producto.precio = producto.precio * 0.9
@@ -91,15 +92,17 @@ console.log(idProductos)
 
 // Pero hay una forma mucho mas corta de escribir esto retorno implicito con arrow function
 const idProductos = productos.map(producto => producto.id);
-// esta var de producto se puede llamar de cualquier manera pero seróa mejor no escribirla
+// esta var de producto se puede llamar de cualquier manera pero sera mejor no escribirla
 // desarmando el parámetro recibido y obteniendo solo la prop de id del parámetro que nos 
 // llegue y retornando esa prop
 // se lee así:
 // > a partir del arr de productos > obtenemos un nuevo array idProductos > con el id de cada uno
+//acá desestructuramos esa prop
+
 const idProductos = productos.map(({ id }) => id);
 
 // ::filter()
-// .filter() > exclusion
+// .filter() > exclusion > filtra según una condición
 
 // sintaxis
 var newArray = arr.filter(callback(currentValue[, index[, array]])[, thisArg])
@@ -111,11 +114,18 @@ var newArray = arr.filter(callback(currentValue[, index[, array]])[, thisArg])
 
 // si el elemento no cumple con cierta condición entonces es descartado el resultado es un nuevo array
 // que contiene los elementos del array original que cumple cierta condición, nosotros debemos programar
-// esa condición una función que retorna true o false de acuerdo si nos quedemos quedar un con un element
+// esa condición una función que retorna true o false de acuerdo si nos queremos quedar un con un element
 // o no.
 
+const articulos = [
+    {id: 'vdasdasd', nombre: 'Camiseta', precio: 500},
+    {id: 'voiiopip', nombre: 'Zpatilla', precio: 2000},
+    {id: 'vdasasdi', nombre: 'Pantalon', precio: 1500},
+]
+
+
 let articulosFiltrados  = articulos.filter((articulo) => {
-    return articulo.costo <= 500
+    return articulo.precio <= 500
 }) 
 console.log(articulosFiltrados);
 
@@ -146,10 +156,18 @@ console.log(productosBaratos, productosCaros);
 
 const numbersArr = [ 1, 2, 3, 4, 3, 1, 6, 7 ];
 // podemos sacar los repetidos usando filter un predicado que recibe todo los param
+//indexOf nos va ayudar si un elemento determinado existe y en que posición nos retornara
+//el primer índice en que se cuentra
 const numerosUnicos = numbersArr.filter((number, index, array) => {
     return index === numbersArr.indexOf(number)
+    
 })
+
 console.log(numerosUnicos);//3 1 no van a pasar al nuevo array
+
+// indexOf() Sintaxis
+
+// cadena.indexOf(valorBusqueda[, indiceDesde])
 
 //::reduce()
 //.reduce > compose (compone)
@@ -215,7 +233,7 @@ console.log(total);
 
 // ::Pensemos a reduce como una prensa esta prensa necesita de un array un valor inicial que le 
 // tenemos que indicar nosotros y con cada vuelta de la palanca opera con el valor que va acumulando con
-// cada elemento del array tras operar con todos los elementos del array obtenemos un unico valor como resultado
+// cada elemento del array tras operar con todos los elementos del array obtenemos un único valor como resultado
 // en este caso 70 un ejemplo x la suma de todos los números del array, reduce se podría llamar acumular
 // pero se llama reduce estamos reduciendo el array original a un unico valor y lo que vamos a tener que escribir 
 // nosotros es la función reductora, la función encargada de ir actualizando el valor del acumulador con cada
@@ -223,10 +241,11 @@ console.log(total);
 
 const numeros = [4, 40, 20, 50];
 let total = 0;
-for (const numero of numeros) {
-    return total += numero
+ for (const numero of numeros) {
+    total += numero
 }
 console.log(total);
+
 
 /*el primer parametro de reduce es la función reductora la que va ir actualizando el acumulador
 y el segundo parametro es el valor unicial del acumulador
@@ -238,17 +257,20 @@ el acumulador va llegar con el valor inicial.
 // let total = números.reduce((accumulador, número, index, números) => {
 
 // }, 0)
+
 // pero en este caso no lo vamos a necesitar dentro de la función reductora tenemos que retornar
 // el numero del acumulador actualizado, en este caso retornando la suma del valor que nos llego
 // y el numero actual, estamos retornando que nuevo valor va tener el acumulador, después de girar la palanca
 // podemos sacar la sentencia de return y las llaves
 const numeros = [4, 40, 20, 50];
 
-let total = numeros.reduce((acumulador, numero) => {
-    return acumualador + numero
-}, 0)
+// let total = numeros.reduce((acumulador, numero) => {
+//     return acumulador + numero
+// }, 0)
 
-let total = numeros.reduce((acumulador, numero) =>  acumualador + numero,  0);
+
+let total = numeros.reduce((acumulador, numero) =>  acumulador + numero,  0);
+console.log(total)
 
 // queda más comodo de esta manera así nos queda mas separado lo que hace cada parte del programa
 
@@ -260,7 +282,7 @@ total = numeros.reduce(acomular, 0)
 // como valor inicial y va comenzar acumular desde el segundo elemento y va comenzar a acumular desde
 // el segundo elemento > 40, 20, 50
 // si estuviera vacío e intentamos ejecutar este programa veríamos un error de tipo por la consola
-// const numeros = [); ya que estamos invocando a reduce sin un valor inicial que pueda usar
+// const numeros = []; ya que estamos invocando a reduce sin un valor inicial que pueda usar
 // por eso si vas hacer esto asgurate ante que estas sentencias se ejecute solo si el array tiene elementos
 // con reduce podemos obtener un nuevo objeto u otro array
 
@@ -277,7 +299,7 @@ cada elemento del array original.
 > dentro de la función agregamos el doble de el elemento dentro del array
 > return el nuevo elemento del actualizado del acumulador para que le llegue al siguiente elemento
 > hay que tener cuidado el retorno de la función reductora este es un error muy común
-return acumulador.psuh(numero * 2); push devuelve la cantidad de elemento con las que queda el array,
+return acumulador.push(numero * 2); push devuelve la cantidad de elemento con las que queda el array,
 después de agregar el el elemento en cuestión y recuerda que que el valor que retornamos de esta función
 le va llegar como el acumulador para el proximo elemento y no queremos que le llegue un numero
 si no un array return acumulador
@@ -306,6 +328,6 @@ const acumuladorDobles = (acumulador, numero) => [...acumulador, numero * 2];//l
 
 
 
-const dobles = numeros.reduce(acomularDobles, []);
+const dobles = numerosGroup.reduce(acumuladorDobles, []);
 
 

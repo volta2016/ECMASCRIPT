@@ -127,7 +127,7 @@ console.log(name, nameArray)
 
 const lis = document.querySelectorAll('li');
 const lisArray = Array.from(document.querySelectorAll('li'));
-is true Array?
+// is true Array?
 console.log(Array.isArray(lis));// output: false
 console.log(Array.isArray(lisArray));// output: true
 
@@ -136,6 +136,21 @@ console.log(Array.isArray(lisArray));// output: true
 
 // This create array from every arguments passed into it.
 
-const nums = Array.of(1,2,3,4,5,6)
-console.log(nums)
+const nums = Array.of(1, 2, 3, 4, 5, 6);
+console.log(nums); // output: [1, 2, 3, 4, 5, 6]
+
+const numbers = [1, 4, 9];
+const raiz = numbers.forEach(num => {
+  console.log(Math.sqrt(num))
+});
+
+//Math.sqrt()//devueleve la raiz
+console.log('aqui undefined', raiz)
+
+determina si un valor pasaso es un array
+
+Array.isArray([1, 2, 3]);  // true
+Array.isArray({foo: 123}); // false
+Array.isArray('foobar');   // false
+Array.isArray(undefined);  // false
 
