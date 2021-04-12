@@ -236,3 +236,5 @@ En general, let sería todo lo que se necesita dentro de un bloque, función o
 ámbito global. const sería para variables 
 que no van sufrir una reasignación. var se puede relegar para cuando 
 necesitemos hacer hoisting, vamos, casi nunca. */
+console.log(number); //undefined var hace hoisting
+var number = 2;
