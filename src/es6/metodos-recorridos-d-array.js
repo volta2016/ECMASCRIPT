@@ -328,6 +328,7 @@ const acumuladorDobles = (acumulador, numero) => [...acumulador, numero * 2];//l
 
 
 
-const dobles = numerosGroup.reduce(acumuladorDobles, []);
+const dobles = numerosGroup.reduce(acumuladorDobles, []);//[ 142, 82, 38, 154, 6, 130 ]
+
 
 
