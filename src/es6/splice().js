@@ -1,4 +1,4 @@
-// El método splice() cambia el contenido de un array eliminando 
+// El método splice() cambia el contenido de un array eliminando
 // elementos existentes y/o agregando nuevos elementos.
 
 /* Sintaxis
@@ -23,61 +23,77 @@ empezando en el índice start. Si no se especifica ningún elemento,
 splice() solamente eliminará elementos del array.
  */
 
-const months = ['Jan', 'March', 'April', 'June'];
-months.splice(1, 0, 'Feb');
+const months = ["Jan", "March", "April", "June"];
+months.splice(1, 0, "Feb");
 // inserts at index 1
 console.log(months);
 // expected output: Array ["Jan", "Feb", "March", "April", "June"]
 
-months.splice(4, 1, 'May');
+months.splice(4, 1, "May");
 // replaces 1 element at index 4
 console.log(months);
 // expected output: Array ["Jan", "Feb", "March", "April", "May"]
 
+//Eliminar varios elementos a partir de una posición
 
+//Nota:
+//Con .splice() no solo se puede eliminar elementos del array, si no que también podemos
+//extraerlos guardándolo en un nuevo array. ¡Ojo! que al hacer esto estaríamos modificando el array de origen.
+let vegetales = ["Repollo", "Nabo", "Rábano", "Zanahoria"];
+console.log(vegetales);
+// ["Repollo", "Nabo", "Rábano", "Zanahoria"]
 
-let foo = [ 'thumb-1', 'thumb-2', 'thumb-3', 'thumb-4' ];
+let pos = 1,
+	numElementos = 2;
 
-function removeItemFromArr ( arr, item ) {
-  let i = arr.indexOf( item );
+let elementosEliminados = vegetales.splice(pos, numElementos);
+// ["Nabo", "Rábano"] ==> Lo que se ha guardado en "elementosEliminados"
 
-  if ( i !== -1 ) {
-      arr.splice( i, 1 );
-  }
+console.log(vegetales);
+// ["Repollo", "Zanahoria"] ==> Lo que actualmente tiene "vegetales"
+
+let foo = ["thumb-1", "thumb-2", "thumb-3", "thumb-4"];
+
+function removeItemFromArr(arr, item) {
+	let i = arr.indexOf(item);
+
+	if (i !== -1) {
+		arr.splice(i, 1);
+	}
 }
 
-removeItemFromArr( foo, 'picture-1' );
-console.info( foo );
+removeItemFromArr(foo, "picture-1");
+console.info(foo);
 // ["thumb-1", "thumb-2", "thumb-3", "thumb-4"]
 
-removeItemFromArr( foo, 'thumb-2' );
-console.info( foo );
+removeItemFromArr(foo, "thumb-2");
+console.info(foo);
 // ["thumb-1", "thumb-3", "thumb-4"]
 
-// No está mal; es una opción válida. Podemos formatear un poco la función para que tenga 
+// No está mal; es una opción válida. Podemos formatear un poco la función para que tenga
 // mejor aspecto sin alterar su comportamiento:
 
-let removeItemFromArr = ( arr, item ) => {
-    var i = arr.indexOf( item );
-    i !== -1 && arr.splice( i, 1 );
+let removeItemFromArr = (arr, item) => {
+	var i = arr.indexOf(item);
+	i !== -1 && arr.splice(i, 1);
 };
 
-// Otro problema que podemos encontrar ahora es el de la no inmutabilidad: 
-// la función anterior toma un array y lo modifica, haciendo imposible volver a su estado original. 
+// Otro problema que podemos encontrar ahora es el de la no inmutabilidad:
+// la función anterior toma un array y lo modifica, haciendo imposible volver a su estado original.
 // En ciertos escenarios y paradigmas, como bajo la Programación Funcional, el concepto de mutabilidad no está permitido.
-// Propongamos una primera versión inmutable de nuestra función utilizando 
+// Propongamos una primera versión inmutable de nuestra función utilizando
 // para ello el método Array.filter():
 
-function removeItemFromArr( arr, item ) {
-    return arr.filter( function( e ) {
-        return e !== item;
-    } );
-};
- 
-var newFoo = removeItemFromArr( foo, 'thumb-2' );
- 
-console.info( foo );
+function removeItemFromArr(arr, item) {
+	return arr.filter(function (e) {
+		return e !== item;
+	});
+}
+
+var newFoo = removeItemFromArr(foo, "thumb-2");
+
+console.info(foo);
 // ["thumb-1", "thumb-2", "thumb-3", "thumb-4"]
- 
-console.info( newFoo );
+
+console.info(newFoo);
 // ["thumb-1", "thumb-3", "thumb-4"]
