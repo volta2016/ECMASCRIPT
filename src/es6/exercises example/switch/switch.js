@@ -56,6 +56,24 @@ const LOKI_DISFRACES = {
 const LOKI_DEFAULT_DISFRAZ = "loki";
 
 /*Vamos intentar recuperar  LOKI_DISFRACES pasarle el adversario > acceder a esa posición en objeto utilizando la key
-del adversario y en caso de que no la encuentre vamos a utilizar el LOKI_DEFAULT_DISFRAZ, añadir un nuevo
-adversario es tan fácil como añadir una propiedad mas nuestro obj. de esta forma simplificamos ademas
-nos permite exportar esta const LOKI_DISFRACES en diferentes sitios  */
+del adversario y en caso de que no la encuentre vamos a utilizar el LOKI_DEFAULT_DISFRAZ, accedemos con Property accessors. 
+Añadir un nuevo adversario es tan fácil como añadir una propiedad mas nuestro obj. de esta forma simplificamos ademas
+nos permite exportar esta const LOKI_DISFRACES en diferentes sitios ejecutamos la función para retorar el string
+de que disfraz toma loki */
+
+const adversario = "Lobezno";
+
+const LOKI_DISFRACES = {
+	"Iron-Man": () => "Magneto",
+	Thor: () => "Odin",
+	Hulk: () => "Thanos",
+	Lobezno: () => "Magneto",
+};
+
+const LOKI_DEFAULT_DISFRAZ = "loki";
+
+const loki = LOKI_DISFRACES[adversario]
+	? LOKI_DISFRACES[adversario]()
+	: LOKI_DEFAULT_DISFRAZ;
+
+console.log(loki);
