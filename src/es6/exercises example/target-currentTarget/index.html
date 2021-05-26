@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		.m {
+			margin: 1rem;
+			padding: 1rem;
+		}
+	</style>
+	<body>
+		<h1>event.target vs event.currentTarget</h1>
+		<main class="m" style="background-color: bisque">
+			this text is inside the main element
+			<div class="m" style="background-color: deeppink">
+				this text is inside the div element
+			</div>
+		</main>
+		<script>
+			const main = document.querySelector("main");
+			const div = document.querySelector("div");
+			main.addEventListener("click", clicked);
+			div.addEventListener("click", clicked);
+
+			function clicked(evt) {
+				console.log(
+					"The click that was attached to " +
+						evt.target.tagName +
+						" " +
+						"is currently at " +
+						evt.currentTarget.tagName
+				);
+			}
+
+			//currentTarget > container
+			//target > firing element the event
+		</script>
+	</body>
+</html>
