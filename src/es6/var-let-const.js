@@ -1,3 +1,20 @@
+//buenas prácticas para declarar variables
+//var
+const camelCase = true;
+
+//constantes valor que no va a cambiar
+const VALOR_QUE_CAMBIA = "constant";
+
+//snake case
+const snake_case = "value";
+
+/***variable que guardan un valor boleano es decir o true o false, es bueno empezar siempre con mismo prefijo
+que puede ser is are o hase por ejemplo***/
+
+const isVisble = true;
+const hasPrice = false;
+const areAvailable = true;
+
 /* difrerencias entre var let y const 
 javasript es un lenguaje con ambito el ambito global como ámbito
 isibilidad o scope predeterminado y en el que todo se pasa por referencia 
