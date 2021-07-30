@@ -21,6 +21,14 @@ console.info(myArr.includes( 'manzana' )); // false
 console.info(myArr.indexOf( 'donna' )); // 1
 console.info(myArr.indexOf( 'pensiero')); // -1
 
+const product = "Cannon 1000D - Camara de fotos";
+
+
+console.log(product.includes("Cannon"))
+console.log(product.includes("Nikon"))
+console.log(product.includes("Video"))
+console.log(product.includes("fotos"))
+
 
 // Old/ugly fashion:
 if ( myArr.indexOf( '' ) !== -1 ) {

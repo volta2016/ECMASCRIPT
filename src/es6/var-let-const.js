@@ -15,6 +15,8 @@ const isVisble = true;
 const hasPrice = false;
 const areAvailable = true;
 
+/* no use numero en las var ocupa single o algo que las diferencia a cuerdo a la acción */
+
 /* difrerencias entre var let y const 
 javasript es un lenguaje con ambito el ambito global como ámbito
 isibilidad o scope predeterminado y en el que todo se pasa por referencia 
