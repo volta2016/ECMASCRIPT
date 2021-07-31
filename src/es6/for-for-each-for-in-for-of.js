@@ -44,7 +44,7 @@ for (let i = 0; i < names.length; i++) {
 
 /*Tenemos que pasarle un array (una lista) ante del de llamar al forEach para 
 que funcione y como parametro tenemos que
-pasarle una función > a esa funcion como parametro tienes que pasarle el elemento el nombre del elemento
+pasarle una función > a esa función como parametro tienes que pasarle el elemento > el nombre del elemento
 que se va utilizar para iterar cada uno de los elementos del array
 
 forEach() ejecuta la función callback una vez por cada elemento presente en el array en orden ascendente.
@@ -83,6 +83,15 @@ function logArrayElements(element, index, array) {
 // Nótese que se evita el 2° índice ya que no hay ningún elemento en esa posición del array
 [2, 5, , 9].forEach(logArrayElements);
 
+/*Object.keys()
+Object.keys devuelve un array cuyos elementos son strings correspondientes a las propiedades 
+enumerables que se encuentran directamente en el object. El orden de las propiedades es el 
+mismo que se proporciona al iterar manualmente sobre las propiedades del objeto.
+
+::
+Object.keys(obj)
+*/
+
 let obj = {
 	first: "John",
 	last: "Doe",
@@ -95,6 +104,10 @@ Object.keys(obj).forEach((key) => console.log(key, obj[key]));
 Object.keys(obj).forEach(function (key) {
 	console.log(key, obj[key]);
 });
+
+// arreglo como objeto con nombres ordenados aleatoriamente
+var an_obj = { 100: "a", 2: "b", 7: "c" };
+console.log(Object.keys(an_obj)); // console: ['2', '7', '100'] 1829
 
 //::forEach con nodeList::
 let nodo = document.createElement("div");
@@ -111,6 +124,9 @@ let list = nodo.childNodes;
 list.forEach(function (currentValue, currentIndex, listObj) {
 	console.log(currentValue + ", " + currentIndex + ", " + this);
 }, "miEsteArg");
+
+/*:::hojo hay que tener en cuenta que acá esta objeto global de node no el del dom
+esto no correra si ejecutamos el código directamente*/
 
 // '[object HTMLParagraphElement], 0, miEsteArg'
 // '[object Text], 1, miEsteArg'

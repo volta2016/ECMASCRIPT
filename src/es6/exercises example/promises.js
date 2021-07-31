@@ -65,3 +65,12 @@ promise
   })
   .then((dataPromise) => { console.log(dataPromise); })
   .catch((err) => { console.log(err.message); });
+
+
+  //_________________________________
+  /*Promise.all 
+  
+  lo que va hacer es que si tenemos  3 promesas y la primera tarda 10 segundos al resolverse,
+  la segunda tarda 20 segundos y la tercera 15 segundo en resolverse, si nostros la resolvemos en bloques
+  separados vamos a tener un total de 45 segundo pero si las resolvemos a traves de un promise all
+  va tardar la promesa > usar siempre const para variable*/

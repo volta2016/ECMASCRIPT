@@ -3,6 +3,15 @@
 // Los parámetros Rest son una forma de utilizar parámetros virtualmente infinitos, se definen agregando 
 // ... adelante del nombre del parámetro rest, éste tiene que ser siempre el último parámetro de la función.
 
+//:::lo que hace rest es junta los valores de un arreglo > spread expande (o sepera los valores)
+
+const numerosPequenos = [1,2,3];
+const numerosGrandes = [5,6,7];
+
+// const totalNumeros = numerosPequenos.concat(numerosGrandes)//concat uno los elementos
+const numerosMasUno = [...numerosPequenos, 4, ...numerosGrandes];
+console.log(numerosMasUno)
+// console.log(totalNumeros)
 
 function sumar(a,b, ...c) {
   let resulatdo = a + b;
