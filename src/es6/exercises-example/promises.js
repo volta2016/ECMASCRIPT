@@ -83,22 +83,48 @@ pendiente > pending
 Sirve para manejar flujos de datos asincrónicos de manera más simple y así evitar el famoso
 callback hell 
 
-- Un ejemplo cuando manejamos los datos en el front cuando pedimos información a una API 
+callback hell example*/
 
-- En el back cuando pedimos información en la base de datos
+function completarTareas(req, res) {
+  User.findById(req.userId, funciton(err, user) {
+    if(err) {
+      res.send(err)
+    } else {
+      tasks.findById(user.taskId, function(err, user) {
+        if (err) {
+          return res.send(err);
+        } else {
+          tasks.completed = true;
+          tasks.save(function (err) {
+            if(err) {
+              return res.send(err);
+            } else {
+              return res.send("task complete");
+            }
+          })
+        }
+      })
+    }
+  })
+}
 
-Nos vienen a facilitar las acciones asincrónicas en nuestro código
-hay 2 maneras de trabajar para evitar lo que es el callback hell una es 
-1- Una es el método then
-2- Es el metodo async await
+// - Un ejemplo cuando manejamos los datos en el front cuando pedimos información a una API 
 
-// ASYNC AWAIT */
+// - En el back cuando pedimos información en la base de datos
+
+// Nos vienen a facilitar las acciones asincrónicas en nuestro código
+// hay 2 maneras de trabajar para evitar lo que es el callback hell una es 
+// 1- Una es el método then
+// 2- Es el metodo async await
+
+// ASYNC AWAIT 
 //Queremos actualizar las tareas de un usuario > completadas en neustra db
 
-//Promesas con then El .then nos permite manjarlas de manera sincrónicas
+//**Promesas con then El .then nos permite manjarlas de manera sincrónicas
 //con .then podemos ir encadenando multiple promesas para hacerlo de una manera mucho mas simpple
 
 function completarTareas(req, res) {
+  //acción asincrónica
   User.finById(req.userId)
     .then(function(user) {
       return Taks.findById(user.taskId);
@@ -116,10 +142,11 @@ function completarTareas(req, res) {
 }
 
 
-//ASYNC AWAIT
+//**ASYNC AWAIT
 
 //async le va decir a nuestro código que va a correr una función asincrónica
-//y nos va permitir utlizar  
+//y nos va permitir utlizar. Si existe algún error en nuestro codigo del try lo va tomar el
+//catch 
 
 //catch nos va servir para el manejo de errores 
 
