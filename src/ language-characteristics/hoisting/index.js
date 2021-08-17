@@ -182,8 +182,8 @@ console.log(source)
 
 //Uncaught SyntaxError: Missing initializer in const declaration
 
-Una const indica un valor constante. Este valor no puede ser cambiado durante la ejecución del código. Por lo tanto, tiene sentido que requiera un valor inicializador en el momento de la declaración.
-Uso correcto de const:
+//Una const indica un valor constante. Este valor no puede ser cambiado durante la ejecución del código. Por lo tanto, tiene sentido que requiera un valor inicializador en el momento de la declaración.
+//Uso correcto de const:
 
 const source = "@volta2016";
 console.log(source);
