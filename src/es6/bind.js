@@ -1,4 +1,9 @@
-/*El método bind() crea una nueva función, que cuando es llamada, 
+/*
+¿Que hace bind el método bind()?
+El método bind() crea una nueva función que cuando se manda
+a llamar tiene un contexto "this· asignado por nostros 
+
+El método bind() crea una nueva función, que cuando es llamada, 
 asigna a su operador  this el valor entregado, con una secuencia 
 de argumentos dados precediendo a cualquiera entregados cuando la 
 función es llamada. 
@@ -20,6 +25,28 @@ getX(); // 9, porque en este caso, "this" apunta al objeto global
 // Crear una nueva función con 'this' asociado al objeto original 'module'
 var boundGetX = getX.bind(module);
 boundGetX(); // 81
+
+
+//::::: otro ejemplo
+
+var fullName = "Santana de Souza";
+
+const person = {
+  other: {
+    fullName: "KIMURA"
+  }
+	fullName: "Do Santos",
+	getFullname: function () {
+		return this.fullName;
+	},
+};
+
+// console.log(person.getFullname());
+
+var getFullname = person.getFullname.bind(person.other);//setiamos el contexto que queremos
+
+console.log(getFullname());
+
 
 /* El siguiente uso simple de bind() es definir una función 
 con argumentos predeterminados que precederán a los argumentos 
@@ -246,16 +273,23 @@ render(){
 }
 
 /*Metodo constructor lo primero que hay que recibir son las propiedades 
-que le van llegar cuando se haga la instancia de user o sea ash y el avatar, bueno después si yo quiero, si yo invoco al método constructor ya que yo estoy haciendo una herencia de componentes tengo que llamar a a super() para que toda las cosas todo this este disponle en mi clase superior que es mi clase Component entonces le tengo que pasar mis propiedades para que funcione de la manera correcta.
+que le van llegar cuando se haga la instancia de user o sea ash y el avatar, bueno después si yo quiero, 
+si yo invoco al método constructor ya que yo estoy haciendo una herencia 
+de componentes tengo que llamar a a super() para que toda las cosas todo
+this este disponle en mi clase superior que es mi clase Component entonces 
+le tengo que pasar mis propiedades para que funcione de la manera correcta.
 Y LUEGO DE ESO YA PUEDO USAR MI método constructor , para asignarle 
 un nuevo contexto ámbito de ejecución a esta funcion de handleClick()
 
 Por que la funciones normales las no arrow function tienen 3 métodos 
 para poder ser invocadas cambiarles su this y  asignárselo de de manera explicita el metodo:
 El metodo
-apply()
-call()
-bind()
+apply() > creo uan nueva f() el contexto this es asignado por nostros
+call() > se le pasas los argumentos separados por ,
+bind() > se pasa los argumentos por medio de un array
+
+> lo que tienen de similitud el primer parametro es el scope o el contexto 
+de la f()
 
 Y este ultimo es el que me sirve el método bind()
 this.handleClick.bind()
