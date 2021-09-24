@@ -154,7 +154,7 @@ con var.:::*/
 // Por ejemplo, en el siguiente snippet la variable i es una
 // variable global y la variable j es una variable local:
 
-let i = 0;
+let i = 0; //variable inicializada
 function foo() {
 	i = 1; // se re asignar se puede acceder a una var global pero no de afuera acceder a su scope local
 	let j = 2;
@@ -257,3 +257,7 @@ que no van sufrir una reasignación. var se puede relegar para cuando
 necesitemos hacer hoisting, vamos, casi nunca. */
 console.log(number); //undefined var hace hoisting
 var number = 2;
+
+let i = 0; //variable inicializada
+let a; // variable declarada pero no inicializada
+let miVariable = "texto"; //case-sensitive quiere decir que es sensible a minusculas y mayusculas
