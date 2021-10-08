@@ -28,3 +28,22 @@ console.log(mutiplicar); //forEach no permite almacenar el valor de la operacion
 const mutiplicar2 = numerosTwo.map((x) => x * 5);
 console.log(mutiplicar2); //podemos ver que si me esta devolviendo un nuevo array aplicando la operación [5, 10, 15, 20, 25];
 //
+
+//ejemplo 3:
+
+const numbersGroup = Array(20000).fill(5);
+
+//forEach()
+console.time("forEach()");
+const res1 = numbersGroup.forEach((x) => x * 5);
+console.timeEnd("forEach()");
+//map()
+
+console.time("map()");
+const res1 = numbersGroup.map((x) => x * 5);
+console.timeEnd("map()");
+
+//forEach(): 0.6201171875 ms
+//map(): 0.695068359375 ms
+
+//a nivel de velocidad es un poco mas rapido forEach
