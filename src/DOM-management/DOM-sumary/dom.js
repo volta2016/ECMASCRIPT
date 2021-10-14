@@ -132,3 +132,19 @@ link.appendChild(span); //node
 
 const list_buddy = document.querySelector("#buddiesgroup");
 list_buddy.appendChild(new_buddy);
+
+/** innerHTML  es otro método para insertar cosas. Dicho esto, no se recomienda insertar, como veremos
+ ¡Eso es lo que queremos! Pero hay una restricción con el uso de innerHTML que nos impide usar detectores de eventos 
+ en cualquier elemento dentro de #partner debido a la naturaleza de + = en list.innerHTML + = new_partner.
+ Verá, A + = B se comporta igual que A = A + B. En este caso, A es nuestro
+ Verá, A + = B se comporta de la misma manera que A = A + B. En este caso, A es nuestro HTML
+ existente y B es lo que le estamos insertando. El problema es que esto da como resultado una 
+ copia del HTML existente con el HTML adicional insertado. Y los oyentes de eventos no pueden 
+ escuchar copias. Eso significa que si queremos escuchar un evento de clic 
+ en cualquiera de las etiquetas de la lista de amigos, perderemos esa capacidad con innerHTML.
+ resumen: con innerHTML no es bueno escuchar eventos con addEventListener() ya que son un copia en DOM
+ */
+const partner_name = "Kyo";
+const new_partner = `<li><a>${partner_name}</a></li>`;
+const list_partner = document.querySelector("#partner");
+list_partner.innerHTML += new_partner;
