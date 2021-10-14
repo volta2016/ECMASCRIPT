@@ -19,14 +19,17 @@ console.log(elementClass);
 //El método inserta un conjunto de objetos Node u objetos DOMString después del último hijo del Elemento.
 //Los objetos DOMString se insertan como nodos equivalentes a texto.
 
+//El método de agregar solo nos permite agregar un nodo o texto plano(sin formato) a un elemento en el DOM
+
 //sintaxys
 // Append Something example
+
 const app = document.querySelector("#app");
-const parragrah = document.createElement("p");
+const parragrah = document.createElement("p"); //node or text plain
 parragrah.textContent = "append()";
 app.append(parragrah);
 
-//example 2
+//Ejmplo 2
 const app_2 = document.querySelector("#app2");
 const langs = ["JavaScript", "TypeScript", "Css"];
 
@@ -37,3 +40,31 @@ const nodes = langs.map((lang) => {
 });
 
 app_2.append(...nodes);
+
+//otros metodos que pueden crear node(elementos del DOM)
+
+// 1-Los nodos se crean con document.createElement () en JavaScript 1
+// 2-El texto sin formato es, bueno, texto. Es texto sin formato en el sentido de que no tiene etiquetas HTML ni formato.
+// 3-HTML también es texto pero, a diferencia del texto sin formato, de hecho se analiza como marcado(markup) cuando se agrega al DOM
+
+//Si desea adjuntar detectores de eventos de inmediato, querrá trabajar con nodos porque
+//llamamos addEventListener en los nodos, no en HTML.
+
+//Ejemplo 3
+/*
+Supongamos que tenemos una aplicación de chat y queremos agregar un usuario, Dale, a una lista de amigos cuando inician sesión.
+adjuntar Necesitamos crear un objeto de nodo que se traduzca a Dale.
+
+append
+Necesitamos crear un objeto de nodo que se traduzca en  <li><a>Dale</a></li>.
+Esto resalta la versatilidad de append().
+*/
+const new_buddies = document.createElement("li");
+const link_buddies = document.createElement("a");
+const list = document.querySelector("#buddies");
+
+const text = "Dale";
+link_buddies.textContent = text; //tambien puedes abrir texto plano con append
+new_buddies.append(link_buddies);
+
+list.append(new_buddies);
