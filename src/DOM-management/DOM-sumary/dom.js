@@ -14,7 +14,7 @@ console.log(element_two, element_three);
 const elementClass = document.getElementsByClassName("number");
 console.log(elementClass);
 
-//Element.append();
+//** Element.append();
 
 //El método inserta un conjunto de objetos Node u objetos DOMString después del último hijo del Elemento.
 //Los objetos DOMString se insertan como nodos equivalentes a texto.
@@ -68,3 +68,67 @@ link_buddies.textContent = text; //tambien puedes abrir texto plano con append
 new_buddies.append(link_buddies);
 
 list.append(new_buddies);
+
+/*** appendChild
+appendChild es otro método de JavaScript que tenemos para agregar cosas a elementos del DOM. 
+Es un poco limitado porque solo funciona con objetos de nodo, por lo que necesitaremos ayuda de 
+textContent (o innerText) para nuestras necesidades de texto sin formato.*/
+
+//Ejemplo 4
+const new_buddiestwo = document.createElement("li");
+const link_buddiestwo = document.createElement("a");
+const listTwo = document.querySelector("#buddiesgroup");
+
+const plain_text = "new user";
+link_buddiestwo.textContent = plain_text; //también puedes abrir texto plano con append
+new_buddiestwo.append(link_buddiestwo);
+
+listTwo.appendChild(new_buddiestwo);
+
+//Ejemplo 5
+/* 
+Antes de continuar, consideremos un ejemplo similar, pero con un markup más pesado.
+recordemos que con .classList podemos añadir o remover una clase de la siguiente forma:
+
+$update.classList.remove("hide");
+$save.classList.add("hide");
+
+lo que vamos a crear ahora con js:
+
+<li class="item_user" data-tooltip="Click for Dale">
+  <a id="user_123" class="def" data-user="dale">
+    <img src="images/dale.jpg" alt="Profile Picture"/>
+    <span>Dale</span>
+  </a>
+</li>
+*/
+
+const buddy_name = "Mr Elliot"; //var text
+
+//crear li más atributos
+const new_buddy = document.createElement("li");
+new_buddy.className = "item_user";
+new_buddy.setAttribute("data-tooltip", `Click for ${buddy_name}`);
+
+//crear link más atributos
+const link = document.createElement("a");
+link.id = "user_123"; //setiando un atributo id
+link.className = "def";
+link.setAttribute("data-user", "date");
+
+//crear img más atributos
+const profile_img = document.createElement("img");
+profile_img.src = "./images/mr-elliot.jpeg";
+profile_img.alt = "Profile Picture";
+
+//crear span node
+
+const span = document.createElement("span");
+span.textContent = buddy_name;
+
+new_buddy.appendChild(link); //node
+link.appendChild(profile_img); //node
+link.appendChild(span); //node
+
+const list_buddy = document.querySelector("#buddiesgroup");
+list_buddy.appendChild(new_buddy);
