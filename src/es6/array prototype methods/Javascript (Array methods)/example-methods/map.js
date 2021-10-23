@@ -35,3 +35,23 @@ animals.push("🐶 new");
 
 console.log(nuevoArray); //[ '🐻', '🐯', '🦁' ]
 console.log(animals); //[ '🐻', '🐯', '🦁', '🐶 new' ]
+
+//ejercicios:
+
+const users = [
+  { name: "John", age: 33 },
+  { name: "Kyo", age: 22 },
+  { name: "Ameley", age: 99 },
+];
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Devolver solo el name en un nuevo array
+const newUser = users.map((user) => user.name);
+console.log(newUser);
+
+// Devolver nuevo array con numeros * 2
+
+const multiplicar = numeros.map((number) => number * 2);
+
+console.log(multiplicar);
