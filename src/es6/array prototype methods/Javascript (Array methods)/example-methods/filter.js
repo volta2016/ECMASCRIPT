@@ -18,4 +18,4 @@ console.log(filterUsers);
 //eliminar user por id
 const filterUserId = users.filter((user) => user.id !== 2);
 
-console.log(filterUserId);
+console.log("eliminar id 2", filterUserId);
