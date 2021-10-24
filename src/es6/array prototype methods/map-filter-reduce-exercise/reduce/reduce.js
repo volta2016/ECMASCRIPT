@@ -10,7 +10,7 @@ El valor devuelto de la función reductora se asigna al acumulador, cuyo valor s
 const edadesPersonas = [5, 7, 22, 30, 44];
 
 const totalEdades = edadesPersonas.reduce((acumulator, currentValue) => {
-	return (acumulator += currentValue);
+  return (acumulator += currentValue);
 }, 0);
 
 console.log(totalEdades, "Suma de edades");
