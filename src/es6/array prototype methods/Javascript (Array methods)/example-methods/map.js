@@ -41,7 +41,7 @@ console.log(animals); //[ '🐻', '🐯', '🦁', '🐶 new' ]
 const users = [
   { name: "John", age: 33 },
   { name: "Kyo", age: 22 },
-  { name: "Ameley", age: 99 },
+  { name: "Ameley", age: 27 },
 ];
 
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
