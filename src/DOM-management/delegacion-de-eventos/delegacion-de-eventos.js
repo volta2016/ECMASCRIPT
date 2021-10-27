@@ -5,9 +5,10 @@ En lugar de agregar un detector de eventos a todos y cada uno de los elementos s
 
 Así evitamos la propagación 👌
 */
-alert("hola");
+// alert("hola");
 const container = document.querySelector(".container");
 console.log(container);
+
 container.addEventListener("click", (e) => {
   console.log(e.target);
 });
