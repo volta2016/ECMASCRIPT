@@ -3,13 +3,14 @@
 //ser con dataset o con matched de js, tomar en cuenta el e.target
 // propiedad del evento de destino devuelve el elemento que desencadenó el evento.
 
-const cart = document.querySelector("#id"); //cart ul
-const templatecheck = document.querySelector("#template");
+const cart = document.querySelector("#cart"); //cart ul
+const template = document.querySelector("#template");
+// console.log(template_checkout);
 const footer = document.querySelector("#foooter");
 const footer_template = document.querySelector("#templateFooter");
 const allButtons = document.querySelectorAll(".card .btn");
 
-const fragment = document.createDocumentFragment();
+const fragment = document.createDocumentFragment(); //node vacío NO pertenece al DOM
 
 let cartArray = [];
 
@@ -33,10 +34,10 @@ document.addEventListener("click", (e) => {
 const addCart = (e) => {
   //console.log(e.target.dataset); //primero seleccionamos la fruta construimos nuestro producto que es un objeto
   const product = {
-    titulo: e.target.dataset.fruit,
+    title: e.target.dataset.fruit,
     id: e.target.dataset.fruit,
     count: 1,
-    precio: parseInt(e.target.dataset.precio), //lo pasamos a type number
+    price: parseInt(e.target.dataset.price), //lo pasamos a type number
   };
 
   //buscamos el index
@@ -52,9 +53,18 @@ const addCart = (e) => {
   }
   console.log(cartArray);
 
-  printCart();
+  printCart(cartArray);
 };
 
-// const printCart = () => {};
+const printCart = (array) => {
+  cart.textContent = "";
+  array.forEach((item) => {
+    const clone = template.content.firstElementChild.cloneNode(true); //aplico la clonación del template
+    clone.querySelector(".lead").textContent = item.title; //al template modifico su title
+    clone.querySelector(".badge").textContent = item.count; //empujo la cantidad
+    fragment.appendChild(clone); //todo lo agrego al fragment para evitar el reflow
+  });
+  cart.appendChild(fragment);
+};
 
 allButtons.forEach((btn) => btn.addEventListener("click", addCart));
