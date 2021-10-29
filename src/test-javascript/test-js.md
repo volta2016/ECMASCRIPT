@@ -312,3 +312,81 @@ function juego() {
 
 juego();
 ```
+
+# Listas
+
+## 1️⃣ Responde las siguientes preguntas en la sección de comentarios:
+
+1️⃣ Responde las siguientes preguntas en la sección de comentarios:
+
+¿Qué es un array?
+Conjunto de valores del mismo tipo almacenados en una sola variable.
+
+¿Qué es un objeto?
+
+Un objeto es una colección de propiedades.
+
+¿Cuándo es mejor usar objetos o arrays?
+
+depende de la necesidad del problema podemos optar por uno u otro e incluso
+mezclar estos.
+
+¿Puedo mezclar arrays con objetos o incluso objetos con arrays?
+
+Si se pueden mezclar.
+
+2️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima su primer elemento.
+
+base:
+
+```js
+const books = ["bookbase", "book1", "book2"];
+const printFirstArray = books.find((book) => book === "bookbase");
+console.log(printFirstArray);
+```
+
+respuesta:
+
+```js
+const books = ["bookbase", "book1", "book2"];
+
+const printFirstArray = function (array) {
+  console.log(array[0]);
+};
+console.log(printFirstArray(books));
+```
+
+3️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el array completo).
+
+```js
+const users = [
+  { id: 1, name: "John", age: 33 },
+  { id: 2, name: "Kyo", age: 22 },
+  { id: 3, name: "Ameley", age: 27 },
+];
+
+const printUsers = (array) => {
+  array.forEach((elem) => {
+    console.log(elem);
+  });
+};
+
+printUsers(users);
+```
+
+4️⃣ Crea una función que pueda recibir cualquier objeto como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el objeto completo).
+
+trucazo para iterar objetos:
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+
+```js
+const users = { 1: "kyo", 2: "reita", 3: "nosgov" };
+
+const printOject = (object) => {
+  Object.values(object).forEach((element) => {
+    console.log(element);
+  });
+};
+
+printOject(users);
+```

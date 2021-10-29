@@ -15,7 +15,7 @@ const filterUsers = users.filter((user) => user.age >= 25);
 
 console.log(filterUsers);
 
-//eliminar user por id
+//eliminar user por id filtra el 2 y retorna los diferentes a 2
 const filterUserId = users.filter((user) => user.id !== 2);
 
 console.log("eliminar id 2", filterUserId);
