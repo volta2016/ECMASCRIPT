@@ -135,3 +135,180 @@ if, else if, switch, ternario
 ## ¿Puedo combinar funciones y condicionales?
 
 si
+
+## 2️⃣ Replica el comportamiento del siguiente código que usa la sentencia switch utilizando if, else y else if:
+
+```js
+const tipoDeSuscripcion = "Basic";
+
+switch (tipoDeSuscripcion) {
+  case "Free":
+    console.log("Solo puedes tomar los cursos gratis");
+    break;
+  case "Basic":
+    console.log("Puedes tomar casi todos los cursos de Platzi durante un mes");
+    break;
+  case "Expert":
+    console.log("Puedes tomar casi todos los cursos de Platzi durante un año");
+    break;
+  case "ExpertPlus":
+    console.log(
+      "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año"
+    );
+    break;
+}
+```
+
+respuesta:
+
+```js
+const tipoDeSuscripcion = "Basic";
+
+if (tipoDeSuscripcion === "Free") {
+  console.log("Solo puedes tomar los cursos gratis");
+} else if (tipoDeSuscripcion === "Basic") {
+  console.log("Puedes tomar casi todos los cursos de Platzi durante un mes");
+} else if (tipoDeSuscripcion === "Expert") {
+  console.log("Puedes tomar casi todos los cursos de Platzi durante un año");
+} else if (tipoDeSuscripcion === "ExpertPlus") {
+  console.log("Puedes tomar casi todos los cursos de Platzi durante un año");
+}
+```
+
+3️⃣ Replica el comportamiento de tu condicional anterior con if, else y else if, pero ahora solo con if (sin else ni else if).
+
+```js
+const tipoSuscripcion = (suscripcion) => {
+  var respuesta =
+    suscripcion === "Basic"
+      ? "Puedes tomar casi todos los cursos de Platzi durante un mes"
+      : suscripcion === "Expert"
+      ? "Puedes tomar casi todos los cursos de Platzi durante un año"
+      : suscripcion === "Expert+"
+      ? "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año"
+      : "Solo puedes tomar los cursos gratis";
+  console.log(respuesta);
+};
+
+tipoSuscripcion("Basic");
+```
+
+Bonus: si ya eres una experta o experto en el lenguaje, te desafío a comentar cómo replicar este comportamiento con arrays y un solo condicional.
+
+```js
+const tipoDeSuscripcion = "Free";
+
+const Suscripciones = ["Free", "Basic", "Expert", "Expert+"];
+const Respuestas = [
+  "Solo puedes tomar los cursos gratis",
+  "Puedes tomar casi todos los cursos de Platzi durante un mes",
+  "Puedes tomar casi todos los cursos de Platzi durante un año",
+  "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año",
+];
+
+// indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente.
+let index = Suscripciones.indexOf(tipoDeSuscripcion);
+if (index == -1) {
+  console.error("No exisite este plan u.u");
+} else {
+  console.log(Respuestas[index]);
+}
+```
+
+otro ejemplo:
+
+```js
+const tipoDeSuscripcion = "ExpertPlus";
+const Suscripciones = [
+  ["Free", "Solo puedes tomar los cursos gratis"],
+  ["Basic", "Puedes tomar casi todos los cursos de Platzi durante un mes"],
+  ["Expert", "Puedes tomar casi todos los cursos de Platzi durante un año"],
+  [
+    "ExpertPlus",
+    "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año",
+  ],
+];
+
+for (const suscripcion of Suscripciones) {
+  if (suscripcion[0] == tipoDeSuscripcion) {
+    console.log(suscripcion[1]);
+  }
+}
+```
+
+# Ciclos
+
+## 1️⃣ Responde las siguientes preguntas en la sección de comentarios:
+
+## ¿Qué es un ciclo?
+
+Un bloque de codigo que se repite n cantidad de veces
+
+## ¿Qué tipos de ciclos existen en JavaScript?
+
+for, for of, for in, while, do-while
+
+## ¿Qué es un ciclo infinito y por qué es un problema?
+
+Es un ciclo que nunca se va a detener, puede causar que nuestro navegador se quede pegado sin poder ejecutar ninguna acción
+
+## ¿Puedo mezclar ciclos y condicionales?
+
+Si se puede
+
+2️⃣ Replica el comportamiento de los siguientes ciclos for utilizando ciclos while:
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log("El valor de i es: " + i);
+}
+
+for (let i = 10; i >= 2; i--) {
+  console.log("El valor de i es: " + i);
+}
+```
+
+```js
+//jecutamos antes al console para leer la base del numero
+let i = 0;
+
+while (i < 5) {
+  console.log("El valor de i es: " + i);
+  i++;
+}
+
+i = 7;
+while (i >= 2) {
+  console.log("El valor de i es: " + i);
+  i--;
+}
+```
+
+## 3️⃣ Escribe un código en JavaScript que le pregunte a los usuarios cuánto es 2 + 2. Si responden bien, mostramos un mensaje de felicitaciones, pero si responden mal, volvemos a empezar.
+
+Pista: puedes usar la función prompt de JavaScript.
+
+```js
+let response = prompt("cuanto es 2 + 2 escribe tu respuesta");
+
+if (4 === parseInt(response)) {
+  alert("felicitaciones tu respuesta es correcta");
+} else {
+  alert("tu respuesta es incorrecta");
+}
+```
+
+otro ejemplo;
+
+```js
+function juego() {
+  let resultado;
+  do {
+    resultado = parseInt(prompt('¿Cuál es el resultado de "2 + 2". R: '));
+  } while (resultado !== 4);
+  if (resultado === 4);
+  return console.log("¡Eres un GENIO!");
+}
+
+juego();
+```
