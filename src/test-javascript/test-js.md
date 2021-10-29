@@ -268,8 +268,10 @@ for (let i = 10; i >= 2; i--) {
 }
 ```
 
+respuesta:
+
 ```js
-//jecutamos antes al console para leer la base del numero
+//ejecutamos antes al console para leer la base del numero
 let i = 0;
 
 while (i < 5) {
@@ -277,7 +279,7 @@ while (i < 5) {
   i++;
 }
 
-i = 7;
+i = 10;
 while (i >= 2) {
   console.log("El valor de i es: " + i);
   i--;
@@ -311,6 +313,18 @@ function juego() {
 }
 
 juego();
+```
+
+otro ejemplo;
+
+```js
+let answer;
+do {
+  answer = Number(prompt("How many is 2 + 2?"));
+} while (answer !== 4);
+if (answer === 4) {
+  console.log("Congrats, your answer is correct!!");
+}
 ```
 
 # Listas
@@ -356,6 +370,16 @@ const printFirstArray = function (array) {
 console.log(printFirstArray(books));
 ```
 
+respuesta 2:
+
+```js
+let fruits = ["Apple", "Coconut", "Orange", "Pineapple", "Grape"];
+
+fruits.forEach(function (element, index) {
+  if (index === 0) console.log(element);
+});
+```
+
 3️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el array completo).
 
 ```js
@@ -389,4 +413,24 @@ const printOject = (object) => {
 };
 
 printOject(users);
+```
+
+otro ejemplo:
+
+```js
+const myObject = {
+  firstName: "Larry",
+  lastName: "King",
+  age: 59,
+  address: "CA 56 8",
+  country: "United States",
+};
+
+const printObject = (object) => {
+  for (const key in myObject) {
+    console.log(`${key}: ${object[key]}`);
+  }
+};
+
+printObject(myObject);
 ```
