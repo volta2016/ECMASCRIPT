@@ -2,7 +2,10 @@
 ¿ cómo activo un evento para un elemento en específico?
 
 matches (opens new window): El método matches() comprueba si el Element sería seleccionable por el selector CSS especificado en la cadena; en caso contrario, retorna false.
-dataset
+dataset:
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+
+No hay necesidad de aplicar el e.stopPropagation()
 
 
 TIP
