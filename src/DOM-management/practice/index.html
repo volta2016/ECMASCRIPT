@@ -63,9 +63,12 @@
       </div>
     </main>
 
+    <!--  -->
     <section class="container mt-3">
       <ul id="cart" class="listgroup"></ul>
     </section>
+
+    <!-- total product sumary -->
     <footer id="footer" class="container mt-3">
       <template id="templateFooter">
         <div class="card">
@@ -73,16 +76,17 @@
             class="card-body d-flex justify-content-between aling-items-center"
           >
             <p class="lead mb-0">TOTAL: $<span>1500</span></p>
-            <button class="btn btn-outline-primary">Finalizar compra</button>
+            <button class="btn btn-outline-info">Finalizar compra</button>
           </div>
         </div>
       </template>
     </footer>
 
+    <!-- template carrito -->
     <template id="template">
-      <li class="list-group-item text-uppercase bg-secondary text-white">
+      <li class="list-group-item bg-secondary text-white">
         <span class="badge bg-primary rounded-pill align-middle">14</span>
-        <span class="lead align-middle">A list item</span>
+        <span class="lead align-middle">Frutilla</span>
       </li>
       <li
         class="
@@ -96,8 +100,8 @@
           <p class="lead mb-0">Total: $<span>200</span></p>
         </div>
         <div>
-          <button class="btn btn-sm btn-success">Agregar</button>
           <button class="btn btn-sm btn-danger">Quitar</button>
+          <button class="btn btn-sm btn-success">Agregar</button>
         </div>
       </li>
     </template>
