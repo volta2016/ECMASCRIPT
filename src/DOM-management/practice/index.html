@@ -21,7 +21,7 @@
               <h5 class="card-title">Frutilla 🍓</h5>
               <p class="lead">$300</p>
               <button
-                class="btn btn-primary btn-sm"
+                class="btn btn-outline-primary btn-sm"
                 data-fruit="strawberry"
                 data-price="300"
               >
@@ -36,7 +36,7 @@
               <h5 class="card-title">Banana 🍌</h5>
               <p class="lead">$100</p>
               <button
-                class="btn btn-primary btn-sm"
+                class="btn btn-outline-primary btn-sm"
                 data-fruit="banana"
                 data-price="100"
               >
@@ -51,7 +51,7 @@
               <h5 class="card-title">Manzana 🍏</h5>
               <p class="lead">$200</p>
               <button
-                class="btn btn-primary btn-sm"
+                class="btn btn-outline-primary btn-sm"
                 data-fruit="apple"
                 data-price="200"
               >
@@ -65,22 +65,22 @@
 
     <!--  -->
     <section class="container mt-3">
-      <ul id="cart" class="listgroup"></ul>
+      <ul id="cart" class="list-group"></ul>
     </section>
 
     <!-- total product sumary -->
-    <footer id="footer" class="container mt-3">
-      <template id="templateFooter">
-        <div class="card">
-          <div
-            class="card-body d-flex justify-content-between aling-items-center"
-          >
-            <p class="lead mb-0">TOTAL: $<span>1500</span></p>
-            <button class="btn btn-outline-info">Finalizar compra</button>
-          </div>
+    <footer id="footer" class="container mt-3"></footer>
+
+    <template id="templateFooter">
+      <div class="card">
+        <div
+          class="card-body d-flex justify-content-between align-items-center"
+        >
+          <p class="lead mb-0">Total $<span>1500</span></p>
+          <button class="btn btn-outline-info">Finalizar compra</button>
         </div>
-      </template>
-    </footer>
+      </div>
+    </template>
 
     <!-- template carrito -->
     <template id="template">

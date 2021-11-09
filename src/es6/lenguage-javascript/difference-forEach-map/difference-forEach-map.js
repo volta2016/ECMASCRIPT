@@ -9,11 +9,11 @@ el resultado que entrega mas delante o no?
 const numeros = [1, 2, 3, 4, 5];
 //ambos iteran cada elemento
 numeros.forEach((x) => {
-	console.log("forEach", x);
+  console.log("forEach", x);
 });
 
 numeros.map((x) => {
-	console.log("map", x);
+  console.log("map", x);
 });
 
 //ejemplo 2:
@@ -47,3 +47,21 @@ console.timeEnd("map()");
 //map(): 0.695068359375 ms
 
 //a nivel de velocidad es un poco mas rapido forEach
+
+//trucazo recorrer un objecto con forEach
+
+const users = { 1: "kyo", 2: "reita", 3: "nosgov" };
+
+const printOject = (object) => {
+  Object.values(object).forEach((element) => {
+    console.log(element);
+  });
+};
+
+printOject(users);
+
+let fruits = ["Apple", "Coconut", "Orange", "Pineapple", "Grape"];
+
+fruits.forEach(function (element, index) {
+  if (index === 0) console.log(element);
+});

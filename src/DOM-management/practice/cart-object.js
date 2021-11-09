@@ -6,7 +6,7 @@
 const cart = document.querySelector("#cart"); //cart ul
 const template = document.querySelector("#template");
 // console.log(template_checkout);
-const footer = document.querySelector("#foooter");
+const footer = document.querySelector("#footer");
 const footer_template = document.querySelector("#templateFooter");
 const allButtons = document.querySelectorAll(".card .btn");
 
@@ -18,9 +18,15 @@ let cartArray = [];
 // allButtons.forEach((btn) => btn.addEventListener("click", addCart));
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".card .btn-primary")) {
+  if (e.target.matches(".card .btn-outline-primary")) {
     //pasa si nos da true
     addCart(e);
+  }
+  if (e.target.matches("#cart .list-group-item .btn-success")) {
+    btnAdd(e);
+  }
+  if (e.target.matches("#cart .list-group-item .btn-danger")) {
+    btnSubtract(e);
   }
 });
 
@@ -63,5 +69,49 @@ const printCart = () => {
     clone.querySelector(".btn-success").dataset.id = item.id;
     fragment.appendChild(clone); //todo lo agrego al fragment para evitar el reflow
   });
+
   cart.appendChild(fragment);
+
+  // printFooter();
+};
+
+const printFooter = () => {
+  cart.textContent = "";
+  const total = cartArray.reduce(
+    (acc, current) => acc + current.count * current.price,
+    0 //lo que vamos devolver es un number por eso 0 como segundo param
+  );
+  const clone = footer_template.content.cloneNode(true);
+  console.log(clone);
+  clone.querySelector("span").textContent = total;
+
+  footer.appendChild(clone);
+};
+
+const btnAdd = (e) => {
+  console.log("me diste click ", e.target.dataset.id);
+  cartArray = cartArray.map((item) => {
+    if (item.id === e.target.dataset.id) {
+      item.count++;
+    }
+    return item;
+  });
+  printCart();
+};
+
+const btnSubtract = (e) => {
+  console.log("me diste click ", e.target.dataset.id);
+
+  cartArray = cartArray.filter((item) => {
+    if (item.id === e.target.dataset.id) {
+      if (item.count > 0) {
+        item.count--;
+        if (item.count === 0) return;
+        return item;
+      }
+    } else {
+      return item; //los otros item siguen tal cual
+    }
+  });
+  printCart();
 };
