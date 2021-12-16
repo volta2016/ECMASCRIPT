@@ -1,13 +1,11 @@
-// alert("hola ok");
 //Vamos a aplicar diferentes formar de acceder al elemento que puede
 //ser con dataset o con matched de js, tomar en cuenta el e.target
 // propiedad del evento de destino devuelve el elemento que desencadenó el evento.
 
 const cart = document.querySelector("#cart"); //cart ul
 const template = document.querySelector("#template");
-// console.log(template_checkout);
 const footer = document.querySelector("#footer");
-const footer_template = document.querySelector("#templateFooter");
+const templateFooter = document.querySelector("#templateFooter");
 const allButtons = document.querySelectorAll(".card .btn");
 
 const fragment = document.createDocumentFragment(); //node vacío NO pertenece al DOM
@@ -38,7 +36,7 @@ const addCart = (e) => {
     count: 1,
     price: parseInt(e.target.dataset.price), //lo pasamos a type number
   };
-  console.log(product);
+
   //buscamos el index
   const index = cartArray.findIndex((item) => item.id === product.id); //si es igual nos devuelve el index
   //console.log(index); //-1 por que el array esta vacío -1 es que no existe el producto
@@ -72,24 +70,25 @@ const printCart = () => {
 
   cart.appendChild(fragment);
 
-  // printFooter();
+  printFooter();
 };
 
 const printFooter = () => {
-  cart.textContent = "";
+  // console.log("print footer");
+  footer.textContent = "";
   const total = cartArray.reduce(
     (acc, current) => acc + current.count * current.price,
     0 //lo que vamos devolver es un number por eso 0 como segundo param
   );
-  const clone = footer_template.content.cloneNode(true);
-  console.log(clone);
+  const clone = templateFooter.content.cloneNode(true);
+  // console.log(clone);
   clone.querySelector("span").textContent = total;
 
   footer.appendChild(clone);
 };
 
 const btnAdd = (e) => {
-  console.log("me diste click ", e.target.dataset.id);
+  //console.log("me diste click ", e.target.dataset.id);
   cartArray = cartArray.map((item) => {
     if (item.id === e.target.dataset.id) {
       item.count++;
@@ -100,7 +99,7 @@ const btnAdd = (e) => {
 };
 
 const btnSubtract = (e) => {
-  console.log("me diste click ", e.target.dataset.id);
+  // console.log("me diste click ", e.target.dataset.id);
 
   cartArray = cartArray.filter((item) => {
     if (item.id === e.target.dataset.id) {

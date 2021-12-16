@@ -8,16 +8,16 @@ que se llama arguments
 
 function printMessage(msg) {
   //console.log(msg, msg2)
-  if (arguments.length === 1) console.log(msg)
-  
-  console.log(arguments.length);// yo puedo acá repcuperar siempre todos los argumentos que le
+  if (arguments.length === 1) console.log(msg);
+
+  console.log(arguments.length); // yo puedo acá repcuperar siempre todos los argumentos que le
   //hemos pasado a un método
   for (const arg of arguments) {
-    console.log(arg)
+    console.log(arg);
   }
 }
 
-printMessage('Hola mundo', 'Adios a todos')
+printMessage("Hola mundo", "Adios a todos");
 
 /*lo que devuelve es un iterable
 [Arguments] { '0': 'Hola mundo', '1': 'Adios a todos' }
@@ -28,63 +28,60 @@ iterarlo de otra forma con for of para cada arg que tenemos en el iterable
 no es un array es un iterable
 */
 
-
-
-
 const sum = () => {
-  let results = 0
+  let results = 0;
   for (const arg of arguments) {
-    results += arg
+    results += arg;
   }
-  return results
-}
+  return results;
+};
 
-sum(2, 3, 4, 7)
+sum(2, 3, 4, 7);
 
 /* el valor de this es statico a una arrow function no puedes hacer el bind de this y
 tampoco tendrias arguments si intentas hacer algo así pues te va petar */
-sum.bind(this)
+sum.bind(this);
 
 //solución: para hacer este tipo de funcionalidad y que tenga arguments
 //debe hacer un tipo de función normal y corriente
 
-function sum()  {
-  let results = 0
+function sum() {
+  let results = 0;
   for (const arg of arguments) {
-    results += arg
+    results += arg;
   }
-  return results
+  return results;
 }
 
-sum(2, 3, 4, 7)
+sum(2, 3, 4, 7);
 
 // o puede ser una expresión de función
 
 const sum = function sum() {
-  let results = 0
+  let results = 0;
   for (const arg of arguments) {
-    results += arg
+    results += arg;
   }
-  return results
-}
+  return results;
+};
 
-sum(2, 3, 4, 7)
+sum(2, 3, 4, 7);
 
 // Para que claro entre expresión y declaración
-const sum = function() {} //expresion
+const sum = function () {}; //expresion
 function sum() {} //declaración
 
 //para resolverlo con arrow function
 
 const sum = (...args) => {
-  let results = 0
+  let results = 0;
   for (const arg of args) {
-    results += arg
+    results += arg;
   }
-  return results
-}
+  return results;
+};
 
-sum(2, 3, 4, 7)
+sum(2, 3, 4, 7);
 
 //usando arguments en el día a día
-Math.max(2, 4, 5)
+Math.max(2, 4, 5);
