@@ -13,3 +13,5 @@ Lo interesante es que esta función se representa en muchos casos en la naturale
 ![conejosfibonacci](https://user-images.githubusercontent.com/11634391/30547444-e3dadb2c-9c54-11e7-9b77-e9bbba7b816b.jpg)
 
 Si quieren entender mejor la secuencia pueden entrar en éste <a href=https://masejerciciosresueltos.wordpress.com/2011/03/07/hello-world/>Link</a> y ver la explicación de los conejos con Fibonacci
+
+[recurso ⚡️](https://programmerclick.com/article/9489954840/)
