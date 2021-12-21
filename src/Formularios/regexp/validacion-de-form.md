@@ -92,3 +92,91 @@ esta validacion para solo texto puede ser para un campo de nombre
   maxlength="10"
 />
 ```
+
+# Eventos
+
+Ya aprendimos que podemos capturar eventos a través de Javascript utilizando addEventListener (opens new window), hoy conoceremos algunos para procesar formularios.
+
+# submit
+
+```html
+<div class="container">
+    <h1>Formularios</h1>
+
+    <form id="formulario">
+        <input
+          class="form-control mb-2"
+          placeholder="Ingrese su nombre"
+          type="text"
+          id="userName"
+          name="userName"
+        >
+        <input
+          class="form-control mb-2"
+          placeholder="Ingrese su correo"
+          type="email"
+          id="userEmail"
+          name="userEmail"
+        >
+        <button
+          class="btn btn-primary">Enviar</button
+          type="submit"
+        >
+    </form>
+</div>
+```
+
+```js
+const formulario = document.getElementById("formulario");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("funciona");
+});
+```
+
+## capturar el valor
+
+Nosotros podemos recibir la e como parametro que se refiere al evento
+e.preventDefault(); -> detiene lo que hace el navegador por defecto que era el get.
+
+Cuando queremos detectar lo que escribe el usuario tenemos varias formas:
+
+- por id
+- con querySelctor tomando el input
+- formData
+
+esto seria capturar lo que viene de los campos input
+
+## Capturar value Por id
+
+```js
+//const formularioQuerySelector = document.querySelector("form")//selecionamo la etiqueta
+const formulario = document.getElementById("formulario");
+const userName = document.getElementById("userName");
+const userEmail = document.getElementById("userEmail");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("funciona");
+
+  console.log(userName.value);
+  console.log(userEmail.value);
+});
+```
+
+## Por querySelector input
+
+```js
+const formulario = document.querySelector("#formulario");
+const userName = document.querySelector("input[name='userName']");
+const userEmail = document.querySelector("input[name='userEmail']");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("funciona");
+
+  console.log(userName.value);
+  console.log(userEmail.value);
+});
+```
