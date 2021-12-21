@@ -25,3 +25,70 @@ Esto se realiza mediante el uso de atributos de validación en los elementos del
 - pattern (opens new window): Especifica una expresión regular que define un patrón que los datos que se introduzcan deben seguir.
 
 las validaciones del lado del ciente si pueden ser vulnerables
+
+# form in HTLM
+
+Si doy enviar en mi formulario el navegador hacer un comportamiento por defecto, el comportamiento por defecto
+es el método get, quiere decir que esta enviando la información a través del método get.
+
+por eso en la url aparece toda la información, jamas se hace esto para un metodo login que por el método get nos aparasca la contraseña
+en la url pesima práctica.
+
+ademas desaparecen los datos y parece los valores por en la url por ejemplo el userName
+
+**required**
+
+Quiere decir que los campos deben ser obligatorios, son validaciones de HTML5
+
+**minlength="3"**
+
+Validad la cantidad minima de texto, corresponde a campo de tipo texto
+
+**maxlength="10"**
+
+valida un maximo de caracteres
+
+**min**
+
+Valida a un número su cantidad minima
+
+un input de html5 con required no validad el dominio de un correo mientras tenga el caracter @ y cualquier texto lo deja pasar
+eso lo debemos validar por medio de js con regex expresiones, email html5 lo hace a medias
+
+para solucionar esto usamos
+
+**pattern**
+
+nos va permitir validar el dominio desde nuestro html5 los con los caracteres de nuestra expresión que valide mail
+
+```html
+<input
+  class="form-control mb-2"
+  name="userEmail"
+  placeholder="Ingrese su correo"
+  id="userEmail"
+  autocomplete="off"
+  type="email"
+  required
+  pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+  title="Ingresa un email válido"
+/>
+```
+
+esta validacion para solo texto puede ser para un campo de nombre
+
+```html
+<input
+  class="form-control mb-"
+  name="userName"
+  placeholder="Ingrese su nombre"
+  autocomplete="of"
+  id="userName"
+  type="text"
+  required
+  pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+  title="Solo letras"
+  minlength="3"
+  maxlength="10"
+/>
+```
