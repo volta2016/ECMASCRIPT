@@ -92,3 +92,6 @@ Validar email:
 ```js
 /^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$/;
 ```
+
+Para eso son las expresiones regulares, para econtrar caracteres que nosotros estamos permitiendo o no
+en nuestro formulario o sitio web.
