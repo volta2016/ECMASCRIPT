@@ -30,10 +30,11 @@
           title="Solo letras"
           minlength="3"
           maxlength="10"
+          value="roberto"
         />
-        <p class="text-danger mb-2 d-none" id="alertName"></p>
+        <p class="text-danger my-2 d-none" id="alertName"></p>
         <input
-          class="form-control mb-2"
+          class="form-control my-2"
           name="userEmail"
           placeholder="Ingrese su correo"
           id="userEmail"
@@ -42,6 +43,7 @@
           required
           pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
           title="Ingresa un email válido"
+          value="name@correo.com"
         />
         <p class="text-danger mb-2 d-none" id="alertEmail"></p>
         <button class="btn btn-primary" type="submit">Enviar</button>
