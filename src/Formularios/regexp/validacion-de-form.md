@@ -165,6 +165,11 @@ formulario.addEventListener("submit", (e) => {
 });
 ```
 
+tomo el id de mi formulario id="userName"
+userName.value -> value es una propiedad
+
+el evento es un acción que hace el usuario en este caso presionar el button de submit
+
 ## Por querySelector input
 
 ```js
@@ -179,4 +184,10 @@ formulario.addEventListener("submit", (e) => {
   console.log(userName.value);
   console.log(userEmail.value);
 });
+```
+
+accedemos al input que tenga la propiedad name -> userName
+
+```js
+const userName = document.querySelector("input[name='userName']");
 ```
