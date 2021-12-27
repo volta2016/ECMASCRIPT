@@ -12,7 +12,7 @@ const messageKyleSimpson =
 0 == "0"; //true
 
 /*
-Si corres en la consola del navegador 0 == "0"; //true 
+Si ejecutas en la consola del navegador 0 == "0"; //true 
 ¿ por qué da verdadero ? 
 1- el primer 0 es de type number
 2- el segundo 0 es de type "string"
@@ -31,7 +31,7 @@ Esto conviene si lo estas aplicando a proposito, pero es potencialmente dañino 
 
 0 == "0" // true
 
-¡El segundo 0 se convirtió en un número!
+¡El segundo valor 0 se convirtió en un número!
 entonces 0 es igual a 0 es true
 Extraño, ¿verdad? Bueno, acostúmbrate,
 
@@ -54,7 +54,7 @@ secretamente el 0 en string se convertio a numero
 [1, 2, 3].toString() // "1,2,3"
 ['hello', 'world'].toString() // "hello,world"
 
-//Dado que nuestra matriz está vacía, ¡no tenemos nada a lo que unirnos! Por lo tanto...
+//Dado que nuestra matriz está vacía, ¡no tenemos nada a que unirnos! Por lo tanto...
 
 [].toString() // ""
 
