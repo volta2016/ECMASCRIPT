@@ -119,3 +119,22 @@ doAsyncStuffWithCallback(1, 4, (result) => {
 });
 
 doAsyncStuffWithPromises(2, 3).then((result) => console.log(result));
+
+/*también puedes utilizarlo con async await
+const result = await doAsyncStuffWithPromises(2,3)
+
+Conclusión el callback podrías hacerlo aunque no fuese asíncrono en react muchas veces se habla de callback cuando tu pasa una función hacia un hijo. porque lo que estás diciendo con ese callback, cuando hagas algo llama a esta función para avisarme de vuelta para yo hacer otra cosa. Por eso se llama callback porque es una llamada de vuelta, solo que a la llama de vuelta le pasas como parámetro otra cosa, al callback le estamos pasando el resultado
+
+const doAsyncStuffWithCallback = (num1, num2, callback) => {
+  const resultado = num1 + num2
+  return setTimeout(() => {
+    callback(resultado)
+  }, 500)
+}
+también aveces tiene setido devolver una promesa sin devolver nada
+
+lo que se esta pasando al map es un callback y no puedes hacer un async await dentro de un map, porque se esta ejecutando de forma que no espera,lo que espera es que se ejecute la función
+*/
+
+const iterar = [1, 2, 3, 4].map((item) => item * 2);
+console.log(iterar);
