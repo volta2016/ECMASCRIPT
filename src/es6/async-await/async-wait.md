@@ -1,7 +1,9 @@
-## ¿Es JavaScript sincrono o asíncrono?
+## ¿Es JavaScript síncrono o asíncrono?
 
-La realidad es que el motor de Javascript es sincrono y solo dispone de un Thread de ejecución.
+La realidad es que el motor de Javascript es sincrono y solo dispone de un Thread (single Thread) de ejecución.
 Si nosotros bloqueamos el Thread con un alert a la espera de que confirmemos el motor de Javascript no será capaz de ejecutar nada más y se quedara esperando eternamente.
+
+Esto significa que tiene una pila de tareas y un memory heap. Como se esperaba, ejecuta el código en orden y debe terminar de ejecutar un código de pieza antes de pasar al siguiente. Es sincrónico, pero a veces puede ser perjudicial.
 
 ¿Entonces cómo funciona una petición Ajax que todos sabemos que es asíncrona? . Ahora tenemos claro que el motor de JavaScript es **sincrono.**
 
