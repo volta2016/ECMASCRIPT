@@ -49,9 +49,10 @@ Se refiere a como la fase de espera de las operaciones afectan a nuestra aplicac
 
 ## Síncrono y Asíncrono
 
-Se refiere a ¿cuándo tendrá lugar la respuesta?:
-Síncrono: La respuesta sucede en el presente, una operación síncrona esperará el resultado.
-Asíncrono: La respuesta sucede a futuro, una operación asíncrona no esperará el resultado.
+- Se refiere a ¿ cuándo tendrá lugar la respuesta ?
+
+**Síncrono:** La respuesta sucede en el presente, una operación síncrona esperará el resultado.
+**Asíncrono:** La respuesta sucede a futuro, una operación asíncrona no esperará el resultado.
 Con lo anterior en JavaScript podemos tener:
 
 Código síncrono y bloqueante o
