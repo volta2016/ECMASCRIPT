@@ -117,12 +117,12 @@ const findById = (id) =>
 
 //recordemos que esta es la invocación de toda esta función que declaramos arriba
 
-const search = async (id) => {
+const search = async () => {
   try {
     // solo en el caso que no dependan una de la otra
-    const resPosts = await Promise.all([findById(4), findById(2)]);
+    const resPosts = await Promise.all([findById(1), findById(2)]);
     // console.log(rePosts);
-    console.log(resPosts[0].title, resPosts[1].title);
+    // console.log(resPosts[0].title, resPosts[1].title);
   } catch (error) {
     console.log(error);
   } finally {

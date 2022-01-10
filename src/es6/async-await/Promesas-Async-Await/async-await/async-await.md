@@ -164,3 +164,8 @@ await Promise.all([findById(4), findById(2)])
 Si hay uno que falla va saltar al catch y no continua con nuestro código, también puede ser que eso es lo que
 necesite que falle para que el cliente lo arregle o puede que no, cada vez que tengan un await y quieren hacer
 otro await que no dependa utilizamos Promise.all
+
+Si no tenemos el async dentro de nuestra función con las promesas no puede tirar un error
+en consola:
+
+Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
