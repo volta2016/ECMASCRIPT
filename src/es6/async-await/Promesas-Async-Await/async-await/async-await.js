@@ -110,7 +110,7 @@ const findById = (id) =>
       if (post) {
         resolve(post);
       } else {
-        reject("No encontrado por id: " + id);
+        reject("No encontrado el id: " + id);
       }
     }, 2000);
   });
@@ -119,18 +119,17 @@ const findById = (id) =>
 
 const search = async (id) => {
   try {
-    const post = await findById(id);
-    console.log(post);
+    // solo en el caso que no dependan una de la otra
+    const resPosts = await Promise.all([findById(4), findById(2)]);
+    // console.log(rePosts);
+    console.log(resPosts[0].title, resPosts[1].title);
   } catch (error) {
     console.log(error);
   } finally {
     console.log("se ejecuta si o si");
   }
 };
-// findById(1)
-//   .then((post) => console.log(post))
-//   .catch((error) => console.log(error));
 
-search(4);
+search();
 
 console.log("fin del código");
