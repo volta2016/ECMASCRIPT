@@ -116,15 +116,21 @@ const findById = (id) =>
   });
 
 //recordemos que esta es la invocación de toda esta función que declaramos arriba
+
+const search = async (id) => {
+  try {
+    const post = await findById(id);
+    console.log(post);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("se ejecuta si o si");
+  }
+};
 // findById(1)
 //   .then((post) => console.log(post))
 //   .catch((error) => console.log(error));
 
-const search = async (id) => {
-  const post = await findById(id);
-  console.log(post);
-};
-
-search(1);
+search(4);
 
 console.log("fin del código");
