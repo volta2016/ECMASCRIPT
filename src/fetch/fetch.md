@@ -47,14 +47,49 @@ const findById = (id) =>
 
 1.  Primera tecnica que vamos aplicar es con then
 
+si aplicamos este código vamos a ver que tengo la Response
+
+```js
+fetch("https://jsonplaceholder.typicode.com/todos/").then((res) =>
+  console.log(res)
+);
+```
+
+consola:
+
+Response {type: 'cors', url: 'https://jsonplaceholder.typicode.com/todos/', redirected: false, status: 200, ok: true, …}
+body: (...)
+bodyUsed: false
+headers: Headers {}
+ok: true
+redirected: false
+status: 200
+statusText: ""
+type: "cors"
+url: "https://jsonplaceholder.typicode.com/todos/"
+[[Prototype]]: Response
+
+de acuerdo a ese response nostros tenemos métodos disponibles para definir cual es el contenido del cuerpo
+
+Lo que vamos hacer cuando utilicemos el .then()
+vamos a retornar > aquí el return va estar de forma implicita
+
+> vamos a retornar esa respuesta en json - **res.json()**
+
 ```js
 const url = "https://jsonplaceholder.typicode.com/todos/";
 
 //vamos a trababajar con get
 
-si aplicamos este código vamos a ver que tengo la response
-
 fetch(url)
   .then((res) => res.json())
   .then((data) => console.log(data));
 ```
+
+resumen:
+
+De esta url estoy recibiendo un respuesta que tengo que formatiar como se que esa respuesta viene en json > yo la formateo a json
+
+- recibo la respuesta la trasnformo y la devuelvo es como cuando aplicamos promesas encadenadas
+- luego data se va comporta con la respuesta en json
+- Voy obtener todos los post
