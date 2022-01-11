@@ -14,7 +14,7 @@ En la **programación síncrona** se refiere a la **ejecución de un solo proces
 
 ## ¿Qué son los callbacks?
 
-Un callback es una función que es enviada a otra función para que sea ejecutada en determinado momento.
+Un callback es una función que es enviada a otra función (se pasa como parametro ) para que sea ejecutada en determinado momento.
 
 ¿Qué es Libuv? 💻
 

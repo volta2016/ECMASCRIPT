@@ -22,6 +22,7 @@ los post los vamos a guardar en una constante post y esto va esperar una promesa
 - Resumen: estamos esperando un respuesta lo que se demore esta petición es la promesa.
   esperamos esa respuesta que en este caso nos va traer e post, luego lo vamos a guardar en esta constante y lo podemos
   utilizar const post = await findById(id);
+- El await siempre va esperar una promesa, el await para el código
 
 ```js
 const findById = (id) =>
