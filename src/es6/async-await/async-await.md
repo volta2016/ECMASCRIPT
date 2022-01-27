@@ -5,7 +5,7 @@ Si nosotros bloqueamos el Thread con un alert a la espera de que confirmemos el 
 
 Esto significa que tiene una pila de tareas y un memory heap. Como se esperaba, ejecuta el código en orden y debe terminar de ejecutar un código de pieza antes de pasar al siguiente. Es sincrónico, pero a veces puede ser perjudicial.
 
-¿Entonces cómo funciona una petición Ajax que todos sabemos que es asíncrona? . Ahora tenemos claro que el motor de JavaScript es **sincrono.**
+¿Entonces cómo funciona una petición Ajax que todos sabemos que es asíncrona? Ahora tenemos claro que el motor de JavaScript es **sincrono.**
 
 ```js
 function mensaje() {
