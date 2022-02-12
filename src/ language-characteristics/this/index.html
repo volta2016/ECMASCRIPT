@@ -14,10 +14,7 @@
       console.log(this.nombre);
 
       function imprimir() {
-        console.log(
-          this.nombre +
-            " sigue imprimiendo la variable global ya que sigo en el ambito"
-        );
+        console.log(this.nombre);
       }
 
       imprimir();
@@ -30,6 +27,23 @@
       };
 
       obj.imprimir();
+
+      const obj2 = {
+        nombre: "Contexto Objeto 2",
+        imprimir, // asigne como valor una función que ya estaba declarada
+      };
+
+      obj2.imprimir();
+
+      // comportamiento con arrow function
+      const obj3 = {
+        nombre: "Contexto Objeto 3",
+        imprimir: () => {
+          console.log(this.nombre);
+        },
+      };
+
+      obj3.imprimir();
     </script>
   </body>
 </html>
