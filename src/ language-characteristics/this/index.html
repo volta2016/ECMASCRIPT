@@ -44,6 +44,61 @@
       };
 
       obj3.imprimir();
+
+      //otro ejemplo función constructora que crea su propio Scope
+      // function Persona(nombre) {
+      //   this.nombre = nombre;
+      //   //return console.log(this.nombre);
+      // }
+
+      // let kyo = new Persona("Kyo");
+
+      //ahora que pasa si en vez de retornar directamente la ejecución del console.log() retornamos una función
+
+      // function Persona(nombre) {
+      //   this.nombre = nombre;
+      //   //return console.log(this.nombre);
+      //   return function () {
+      //     console.log(this.nombre, "return f()");
+      //   };
+      // }
+
+      // let kyo = new Persona("Kyo");
+
+      // function Persona(nombre) {
+      //   this.nombre = nombre;
+      //   //return console.log(this.nombre);
+      //   return function () {
+      //     console.log(this.nombre, "return f()");
+      //   };
+      // }
+
+      // let kyo = new Persona("Kyo");
+      // kyo();
+
+      function Persona(nombre) {
+        this.nombre = nombre;
+        //return console.log(this.nombre);
+        return () => console.log(this.nombre);
+      }
+
+      let kyo = new Persona("Kyo");
+      kyo();
+
+      //antes de las arrow function de esta forma solucionábamos
+      //usábamos var pero ahora como tenemos const lo vamos aplicar con const
+
+      function PersonaTwo(nombre) {
+        const that = this; // es igual al this de la función
+        that.nombre = nombre;
+        //return console.log(this.nombre);
+        return function () {
+          console.log(that.nombre, "that solution");
+        };
+      }
+
+      let asuka = new PersonaTwo("Asuka");
+      asuka();
     </script>
   </body>
 </html>
