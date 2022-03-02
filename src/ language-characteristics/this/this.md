@@ -1,6 +1,6 @@
 # this
 
-Palabra reserbada this
+Palabra reservada this
 
 **this** es una palabra que hace referencia al objeto que estamos trabajando
 
@@ -30,7 +30,7 @@ this.nombre = "contexto global"; //creamos una variable al window
 console.log(this.nombre); //contexto global
 ```
 
-```jsx
+```js
 this.nombre = "contexto global";
 console.log(this.nombre);
 
@@ -105,13 +105,7 @@ obj2.imprimir();
 
 ## arrow function
 
-Aquí hay un detalle hasta cierto punto soluciona pero tambien crea conflictos con las arrow function
-aquí lo que hace una arrow function, es manetener un el enlace del contexto que ha sido creado
-el objeto donde aparece, a diferencia de esta function anonima, que es una function como tal maneja su propio
-scope. El contexto de la palabra this lo que hace es tomarlo directamente del padre del objeto en el que se
-ha creado es por eso que no esta imprimiendo el contexto global. Esto enlazar el contexto de padre al hijo
-es muy similar a lo que hace el metodo bind, de hecho del metodo call apply y bind estan muy realacionados
-al método this, entonces ese es una de las caracteristicas por las cuales
+Que pasa si en lugar una función anonima mejor utilizamos las arrow function
 
 ```js
 const obj3 = {
@@ -124,12 +118,19 @@ const obj3 = {
 obj3.imprimir();
 ```
 
-Cuando estás trabajando en la creación de un objeto y dentro de ese objeto tienes propiedades tienes
-métodos y esos metodos van a interactuar con propiedades de objeto literal **NO** se recomienda que utilices
-**arrow function** si no utliza funciones anonimas.
+Aquí hay un detalle hasta cierto punto soluciona pero tambien crea conflictos con las arrow function
+aquí lo que hace una arrow function, es manetener un el enlace del contexto que ha sido creado
+el objeto donde aparece, a diferencia de esta function anonima, que es una function como tal maneja su propio
+scope. El contexto de la palabra this lo que hace es tomarlo directamente del padre del objeto en el que se
+ha creado es por eso que no esta imprimiendo el contexto global. Esto enlazar el contexto de padre al hijo
+es muy similar a lo que hace el metodo bind, de hecho del metodo call apply y bind estan muy realacionados
+al método this, entonces ese es una de las caracteristicas por las cuales
+cuando estás trabajando en la creación de un objeto y dentro de ese objeto tienes propiedades, tienes métodos y esos metodos van a interactuar con propiedades de objeto literal.
+**NO** se recomienda que utilices **arrow function** si no utliza funciones anonimas.
 
 ¿ Por qué ?
-Las arrow function no crean un scope, se salta el scope en que ha sido creado, obedece al contexto global en el cual ha sido creado el objeto
+
+> > Las arrow function no crean un scope, se salta el scope en que ha sido creado, obedece al contexto global en el cual ha sido creado el objeto
 
 por eso es que **obj3.imprimir();** en este caso como obj3 ha sido creado en el contexto global, por es que nos esta imprimiendo
 **Contexto Global**
@@ -215,7 +216,7 @@ Recapitulemos cada función crea un contexto salvo las arrow function heredan el
 Entonces cuando yo ejecute este console.log() directo al return **si existe**
 **return console.log(this.nombre);**
 
-Esta nueba function solita crea un nuevo scope, crea un nuevo contexto internamente esta function anonima
+Esta nueva function solita crea un nuevo scope, crea un nuevo contexto internamente esta function anonima
 no tiene ninguna propiedad nombre
 
 ```js
@@ -234,6 +235,23 @@ entonces si yo esto en lugar de retornarlo como una función anónima la **retor
 
 ```js
 return () => console.log(this.nombre, "return f()");
+```
+
+```js
+function Persona(nombre) {
+  this.nombre = nombre;
+  //return console.log(this.nombre);
+  return () => console.log(this.nombre);
+}
+
+let kyo = new Persona("Kyo");
+kyo();
+```
+
+ahora si vamos a ver en la consola:
+
+```bash
+Kyo
 ```
 
 ## antes de las arrow function de esta forma solucionábamos
