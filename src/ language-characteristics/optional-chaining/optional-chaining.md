@@ -49,3 +49,45 @@ const baz = obj?.foo?.bar?.baz:
 
 const safe = obj?.qux?.baz: //undefined
 ```
+
+para ejecutar nuestro ejercicio
+
+```bash
+yarn add @babel/cli @babel/core @babel/plugin-proposal-optional-chaining -E
+
+```
+
+//bundle de babel
+
+```bash
+
+
+npx babel app.js -o bundle.js
+```
+
+```js
+const user = {
+  name: "leonidas",
+};
+
+if (user?.name) {
+  console.log("existe user.name");
+}
+```
+
+esto es lo que hubiésemos hecho a mano si no tuviéramos el optional
+chaining
+
+vemos a lo que nos transpila
+
+```js
+if (user !== null && user !== void 0 && user.name) {
+  console.log("existe user.name");
+}
+```
+
+con este comando lee lo que hay dentro de **bundle.js**
+
+```bash
+npx babel --plugins @babel/plugin-proposal-optional-chaining app.js -o bundle.js && node bundle.js
+```
