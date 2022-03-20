@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>Select a new element from the list.</p>
+
+    <select id="mySelect" onchange="myFunction()">
+      <option value="Water">water</option>
+      <option value="Fire">fire</option>
+      <option value="Rock">rock</option>
+      <option value="Wind">wind</option>
+    </select>
+
+    <p>
+      When you select a new element, a function is triggered which outputs the
+      value of the selected element.
+    </p>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("mySelect").value;
+        document.getElementById("demo").innerHTML = "You selected: " + x;
+      }
+    </script>
+  </body>
+</html>

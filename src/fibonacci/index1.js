@@ -1,7 +1,7 @@
 const fibonacci = () => {
   let sequence = [0, 1];
 
-  // para ser menor que 350, a sequence tem que ser menor que 14 elementos ja que o 14 é 377
+  // para ser menor que 350, a sequence tiene que ser menor que 14 elementos
   for (let i = sequence.length; i < 14; i++) {
     sequence[i] = sequence[i - 2] + sequence[i - 1];
   }
