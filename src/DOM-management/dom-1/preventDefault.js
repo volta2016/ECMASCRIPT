@@ -19,3 +19,11 @@ form.addEventListener("submit", (e) => {
 
 //Sive para cualquier comportamiento por defecto del navegador e.preventDefaul()
 ancla.addEventListener("click", (e) => e.preventDefault());
+
+carrito.addEventListener("click", function () {
+  documents.body.classList.add("overflow");
+});
+
+close.addEventListener("click", function () {
+  document.body.classList.remove("overflow");
+});
