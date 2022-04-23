@@ -62,4 +62,86 @@ El objeto obj se convirtió en thisArg para map. Pero la función de devolución
 
 ## forEach
 
+forEach es otra función de bucle para una matriz, pero hay una diferencia entre map y forEach en su uso. Hay dos parámetros que map y forEach pueden tomar: una función de devolución de llamada y thisArg que usan como su this.
+
+*/
+
+const arr2 = ["1", "2", "3"];
+// callback function takes 3 parameters
+// the current value of an array as the first parameter
+// the position of the current value in an array as the second parameter
+// the original source array as the third parameter
+const cb2 = (str, i, origin) => {
+  console.log(`${i}: ${Number(str)} / ${origin}`);
+};
+arr2.forEach(cb2);
+// 0: 1 / 1,2,3
+// 1: 2 / 1,2,3
+// 2: 3 / 1,2,3
+
+//Entonces, ¿ qué es diferente ?
+
+//map devuelve una nueva matriz de su matriz original. forEach, sin embargo, no //lo hace. Pero ambos aseguran la inmutabilidad del objeto original.
+
+[1, 2, 3].map((d) => d + 1); // [2, 3, 4];
+[1, 2, 3].forEach((d) => d + 1); // undefined
+
+//Dado que la principal diferencia entre ellos es si hay o no un valor de retorno, querrá usar map para crear una nueva matriz y usar forEach solo para mapear sobre la matriz.
+
+const people = [
+  { name: "Josh", whatCanDo: "painting" },
+  { name: "Lay", whatCanDo: "security" },
+  { name: "Ralph", whatCanDo: "cleaning" },
+];
+
+function makeWorkers(people) {
+  return people.map((person) => {
+    const { name, whatCanDo } = person;
+    return (
+      <li key={name}>
+        My name is {name}, I can do {whatCanDo}
+      </li>
+    );
+  });
+}
+
+<ul>makeWorkers(people)</ul>;
+
+/*En React, por ejemplo, el mapa se usa muy comúnmente para crear elementos porque el mapa crea y devuelve una nueva matriz después de manipular los datos de la matriz original.*/
+
+const mySubjectId = ["154", "773", "245"];
+
+function countSubjects(subjects) {
+  let cnt = 0;
+
+  subjects.forEach((subject) => {
+    if (mySubjectId.includes(subject.id)) {
+      cnt += 1;
+    }
+  });
+
+  return cnt;
+}
+
+countSubjects([
+  { id: "223", teacher: "Mark" },
+  { id: "154", teacher: "Linda" },
+]);
+
+//devuelve 1 porque include verifica si hay realmente un elemento este devuelve -> true, entonces entra al cuerpo del condicional y suma uno la variable inicializada, luego retorna el valor
+
+//Por otro lado, forEach es útil cuando desea hacer algo con los datos sin crear una nueva matriz. Por cierto, el ejemplo podría refactorizarse usando filter.
+
+subjects.filter((subject) => mySubjectId.includes(subject.id)).length;
+
+/*👀 Para resumir, se recomienda usar map cuando cree una nueva matriz que usará, y use forEach cuando no necesite crear una nueva matriz, sino que quiera hacer algo con los datos.
+
+
+El código se ve muy similar pero los resultados son opuestos. Algunas pruebas dijeron que forEach es más rápido y algunas dijeron que el mapa es más rápido. Tal vez se esté diciendo a sí mismo que map/forEach es más rápido que el otro, y puede que tenga razón. No estoy seguro, sinceramente. Creo que la legibilidad es mucho más importante que la velocidad entre map y forEach cuando se trata del desarrollo web moderno. Pero una cosa es segura: ambos son más lentos que la función integrada de JavaScript, for loop. 
+
+## Conclusión 
+
+map y forEach son funciones útiles para recorrer un objeto iterable y pueden embellecer su código y brindarle más legibilidad. Pero una nota clave realmente importante a tener en cuenta es comprender qué hace cada uno y cuándo usarlo.
+
+map sería bueno cuando desee crear una nueva matriz que no afecte la matriz original, y forEach sería mejor cuando solo desee mapear una matriz.
 */
