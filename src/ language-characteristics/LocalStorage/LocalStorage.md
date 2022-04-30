@@ -51,3 +51,9 @@ si actualizamos nuestro sitio web vamos ver que siempre en la ventana vamos a te
 ```js
 const nombreLocalStorage = localStorage.getItem("nameUser");
 ```
+
+### Vamos a remover ahora lo que tenemos en localStorage con **removeItem()**
+
+```js
+localStorage.removeItem("userName");
+```
