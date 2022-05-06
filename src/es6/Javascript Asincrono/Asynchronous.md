@@ -10,11 +10,11 @@ Si bien los idiomas de un sólo hilo simplifican la escritura de código porque 
 
 Imagina que solicitas datos de una API. Dependiendo de la situación, el servidor puede tardar un tiempo en procesar la solicitud mientras bloquea el hilo principal y hace que la página web no responda.
 
-**Ahí es donde entra en juego la asincronía que permite realizar largas solicitudes de red sin bloquear el hilo principal.**
+**Ahí es donde entra en juego la 📲 Asincronía que permite realizar largas solicitudes de red sin bloquear el hilo principal.**
 
-JavaScript fue diseñado para ser ejecutado en navegadores, trabajar con peticiones sobre la red y procesar las interacciones de usuario, al tiempo que mantiene una interfaz fluida.
+✅ JavaScript fue diseñado para ser ejecutado en navegadores, trabajar con peticiones sobre la red y procesar las interacciones de usuario, al tiempo que mantiene una interfaz fluida.
 
-Javascript usa un **modelo asíncrono y no bloqueante**, con un **loop** de **eventos** implementado en un sólo hilo, **(single thread)** para operaciones de entrada y salida (input/output).
+✅ Javascript usa un **modelo asíncrono y no bloqueante**, con un **loop** de **eventos** implementado en un sólo hilo, **(single thread)** para operaciones de entrada y salida (input/output).
 
 Gracias a esta solución, Javascript es áltamente concurrente a pesar de emplear un sólo hilo
 
