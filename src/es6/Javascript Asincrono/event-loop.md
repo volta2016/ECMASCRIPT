@@ -47,7 +47,7 @@ V8. Es algo extraño conocer al principio, porque setTimeout lo primero que usas
 
 lo que hay que entender que tenemos el runtime del v8 pero esas cosas que se llaman asíncronas son las **Web Apis** y que son otras cosas que nos proporciona el navegador
 
-![heap-stack](./images/event-lopp.png)
+![heap-stack](./images/event-loop.png)
 
 tenemos el mítico event loop y el callback queue(cola de callbacks)
 
@@ -171,7 +171,7 @@ no podemos hacer nada, hasta el botón de ejecutar no termina de renderizar el h
 
 - el navegador está bloqueando, se ha colgado no puede hacer nada hasta completar las solicitudes, luego todo va mal porque cosas y me di cuenta que se ejecutan al terminar el proceso y me di cuenta de su acción ya finalizando y ni siquiera podría renderizarlo. No puedo hacer nada.
 
-![sincrono-callstack](./images/]sincrono-callstack2.png)
+![sincrono-callstack](./images/sincrono-callstack2.png)
 
 ## Entonces cómo gestionamos esto ?
 
@@ -179,3 +179,109 @@ no podemos hacer nada, hasta el botón de ejecutar no termina de renderizar el h
   damos un callback y lo ejecutamos más tarde
 
 ## Un ejemplo simple de como trabaja esto
+
+![ejemplo](./images/example.png)
+
+Escribe y ejecutamos setTimeout, pero eso mete el log en la cola para después así que pasamos a JSConf, cinco segundos después escribimos
+**"there"**
+
+Entonces cómo funcionan los retornos de la llamadas asíncronas con respecto a las pilas que vimos antes?
+
+vamos a ejecutar el código
+
+![ejemplo](./images/console.log-hi.png)
+
+sabemos que no se ejecutara inmediato, que tardar 5 segundos
+
+No lo metemos en la pila simplemente sabemos que desaparece.
+
+example
+
+![ejemplo](./images/setTimeout.png)
+
+registramos el console.log de JSConfEU, cinco segundos después mágicamente
+aparece there en el stack
+
+![ejemplo](./images/there.png)
+
+## Concurrency y Event Loop
+
+así es como el bucle de evento entra en **concurrencia**
+
+## Primero veamos la diferencia entre estos conceptos
+
+Concurrencia y paralelismo son conceptos relacionados pero con un importante matiz de diferencia entre ellos. Es por esto que muy a menudo se confunden y se utilizan erróneamente. Vayamos al grano:
+
+**Concurrencia:** cuando dos o mas tareas progresan simultáneamente.
+**Paralelismo:** cuando dos o mas tareas se ejecutan, literalmente, a la vez, en el mismo instante de tiempo.
+
+en realidad se miente un poco al decir que javascript solo puede hacer una sola cosa a la vez
+
+- Es cierto que el Runtime de Javascript solo puede hacer una cosa a la vez no puede efectuar una solicitud AJAX. Mientras está ejecutando otro código. No puedes hacer un
+  setTimeout mientras se esta ejecutando el código.
+
+- Pero podemos hacer más cosas al mismo tiempo porque el navegador es más que el runtime
+
+recordemos que este diagrama: el Runtime de Javascript puede hacer una cosa a la vez, pero el navegador nos da todo esto, nos da estas API, esto son efectivamente subprocesos a los que pueden hacer llamadas, y esas partes del navegador, que son conscientes de esta concurrencia
+
+![hi](./images/hi.png)
+
+si eres backend este diagrama es casi como en node: en lugar de API WEB tenemos API de C++ y nos oculta el subproceso
+
+ahora que tenemos esta imagen vamos a ver como se ejecuta esto en el navegador:
+
+igual que antes ejecuta el código
+
+- consonle.log() hi
+
+![heap-stack](./images/setTimeout2.png)
+
+- ahora vamos a ver que pasa con al llamar a setTimeout(), pasamos el callback de esta función y un retraso a llamada setTimeout.
+
+setTimeout es una API que nos proporciona el navegador no existe dentro del V8, son cosas de más que obtenemos al ejecutar el Runtime de Javascript
+
+![timer](./images/timer.png)
+
+aquí el navegador inicia un temporizador y ahora gestiona la cuenta atrás, lo que significa nuestra llamada a setTimeout ya esta completa y podemos sacarla de la pila. JSConfEU, limpiar, ahora tenemos el temporizador en la API que se completará cinco segundos después. Pero la API web no puede simplemente cambiar nuestro código, no puede meter cosas en la pila cuando le parezca si lo hiciera, aparecen cosas al azar en medio del código, así que es donde entra en juego la cola de tarea o cola de callbacks(task queue)
+
+Cualquiera de las API Web mete el callback en la cola de tareas cuando está lista, la empuja.
+
+- Finalmente llegamos al **bucle de evento,** pues es como la piecesita más sencilla de toda esta ecuación y tiene un objetivo muy simple. \*\*El trabajo de bucle de eventos es observar la pila y cola de tareas. Si la pila está vacía, coge la primero de la cola y lo mete en la pila, que efectivamente lo ejecuta.
+
+![task-queue](./images/task-queue.png)
+
+aquí podemos ver que, ahora la pila está limpia hay un callback en la cola de tareas, se se ejecuta el bucle de eventos, dice:
+!oh, tengo cosas que hacer! mete callback en la pila
+
+![callback in pila](./images/callback-in-pila.png)
+
+Recuerda que la pila (stack) es terreno de javascript de vuelta al v8, aparece el callback en la pila ejecuta el console.lo()
+"there" y hemos terminado
+
+![finish-stack](./images/callback-in-pila.png)
+
+## otro ejemplo setTimeout 0
+
+vamos aplicar un setTimeout pero con 0, la razón es que en general intentas diferir algo hasta que la pila está limpia.
+
+primero ejecuta:
+
+hi
+JSConf
+there
+
+setTimeout cero se completará de inmediato y lo meterá en la cola, recordemos lo que mencionamos sobre el bucle de eventos, tiene que esperar que la pila este limpia antes de poder meter el callback en la pila para que este siga con la ejecución -> para que siga con la ejecución del console.log()
+
+![setTimeout-cero](./images/setTimeout-cero.png)
+
+"hi" "JSCONF" y limpiar, ahora el bucle de evento entra en acción y llama al callback
+
+call-cb
+
+![call-cb](./images/call-cb.png)
+
+**Eso es un ejemplo de setTimeout con cero, es diferir esa ejecución de código, por el motivo que sea hasta el final de la pila hasta que la pila este limpia**
+
+## solicitud Ajax
+
+Entonces todas estas API Web funcionan igual, si tenemos una solicitud ajax
