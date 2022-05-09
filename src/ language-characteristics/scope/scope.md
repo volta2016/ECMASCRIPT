@@ -201,3 +201,23 @@ lo ideal es no hacer esto, nunca tratar de utilizar una variable que no ha sido 
 var siempre se aloja en el scope local dentro de una función o en el global fuera de una función
 
 let | const puede alojarse en el scope, local, de bloque y global, según sea declarada en una función, en un bloque o fuera de ambos
+
+```js
+function saludar()
+let x 10
+```
+
+aqui la variable x esta en alcance global puede usarse en cualquier parte de la funcion
+
+```js
+function saludaer()
+    let x 10
+```
+
+esta dentro de este bloque y no puede usarse fuera de este bloque, el resto del cuerpo de funcion no se va poder utilizar. Si esta dentro del bloque le pertenece al bloque
+
+El valor para una variable con var, que no ha sido asignada, es undefined
+
+El valor para una variable con let, que no ha sido asignada es unitialized
+
+Las variables tambien son alojadas al tope del scope, sin embargo si intentas usar una variable no inicializada, recibiras un error
