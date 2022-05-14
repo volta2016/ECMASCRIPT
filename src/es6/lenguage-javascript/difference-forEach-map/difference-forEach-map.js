@@ -19,7 +19,7 @@ numeros.map((x) => {
 //ejemplo 2:
 const numerosTwo = [1, 2, 3, 4, 5];
 
-//forEach si lo que necesitamos es recorrer nuestro arreglo y hacer operaciones temporales, pero que no se regresen que no podamos
+//forEach si lo que necesitamos es recorrer nuestro arreglo y hacer operaciones temporales, pero que no se regresa un valor de retorno
 //almacenarlas para posterior utlizarlas lo unico que vamos a utlizar es forEach > pensemos en el escenario que es como for tradicional
 const mutiplicar = numerosTwo.forEach((x) => x * 5);
 console.log(mutiplicar); //forEach no permite almacenar el valor de la operaciones

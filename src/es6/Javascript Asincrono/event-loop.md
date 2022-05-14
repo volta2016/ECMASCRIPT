@@ -284,4 +284,124 @@ call-cb
 
 ## solicitud Ajax
 
-Entonces todas estas API Web funcionan igual, si tenemos una solicitud ajax
+Entonces todas estas API Web funcionan igual, si tenemos una solicitud AJAX, hacemos la solicitud a la url con un callback, funciona igual.
+
+console.log("Hi")
+hace la solicitud AJAX -> El código para ejecutar esa solicitud AJAX no vive en el runtime de Javascript pero si en navegador como API web, se lo lanzamos a la URL con un callback, **pero sí en el navegador como API web, se lo lanzamos ala URL con un callback y nuestro código puede seguir corriendo.**
+
+Hasta que complete esa solicitud XHR que tal vez nunca se complete, no importa, la pila sigue ejecutando, suponiendo que se complete, se mete a la cola, lo recoge y el bucle de eventos de ejecuta
+
+![callback-cb](./images/callback-cb.png)
+
+![callback-cb-complete](./images/callback-cb-complete.png)
+
+![bucle-of-event](./images/bucle-of-event.png)
+
+Eso es todo lo que sucede cuando se produce una llamada asíncrona
+
+## vamos con un ejemplo más complicado
+
+vamos a ver le run time de JS
+
+Como se puede ver en el código, vamos a meter un addEventListener por aquí. un setTimeout y luego un console.log().
+Vamos a ejecutarlo y a ver que pasa, añadimos una API DOM, un setTimeout
+
+```js
+console.log("Started");
+
+$.on("button", "click", function onClick() {
+  console.log("Clicked");
+});
+
+setTimeout(function onTimeout() {
+  console.log("Timeout finished");
+}, 5000);
+
+console.log("Done");
+```
+
+"tener en cuenta que el onclick es un Web Apis"
+
+vamos a ejecutar el código:
+
+1. console.log("Started")
+
+2. añadimos una API DOM con un un console.log()
+
+3. console.log("Done");
+
+4. añadimos un setTimeout el código sigue ejecutándose, mete el callback en cola -> se ejecuta y hemos terminado.
+   Empuja el callback a callback Queue -> ejecuta y hemos terminado
+
+si hago click varias veces podemos ver que pasa:
+
+![clicked](./images/clicked.png)
+
+he hecho click pero no se procesa de inmediato, (quedan varios procesos en el callback Queue) luego se mete al call Stack -> se procesa la cola en algún momento se tratara el click correcto
+
+## Otro ejemplo con API asíncronas
+
+En este ejemplo llamamos a setTimeout cuatro veces con un segundo de retraso y un console.log()
+
+```js
+setTimeout(function timeout() {
+  console.log("hi");
+}, 1000);
+
+setTimeout(function timeout() {
+  console.log("hi");
+}, 1000);
+
+setTimeout(function timeout() {
+  console.log("hi");
+}, 1000);
+
+setTimeout(function timeout() {
+  console.log("hi");
+}, 1000);
+```
+
+para cuando los callbacks entran en la cola(callback queue) ese cuarto callback tiene un segundo de retraso y todavía está esperando el callback no se ha ejecutado cierto?
+
+**👀 cuando entra el cuartoreciénn comienza a ejecutarse el primer
+setTimeout**
+
+![4-callbackqueue](./images/4-callbackqueue.png)
+
+**Esto ilustra qué está haciendo no es un tiempo de ejecución garantizado si no un tiempo mínimo para la ejecución al igual que el setTimeout 0 -> no ejecuta el código inmediatamente sino que es lo siguiente que hace, cuando pueda**
+
+## callbacks asíncronos
+
+Vamos hablar sobre los callbacks, los callbacks pueden ser cualquier función que llama a otra función o más explícitamente una devolución de llamada asíncrona que se meterá en la cola de callbacks en el futuro.
+
+Esta sección de código muestra la diferencia, El método forEach en un array, no se ejecuta, toma una función, que podría llamar a un callback pero no funciona de forma asíncrona, si no dentro de la pila actual. Podríamos definir un forEach asíncrono que pudiera tomar un array y un callback, para cada elemento hiciera un setTimeout 0 con ese callback, en teoría debería pasarle el valor, pero vamos a ejecutarlo así vemos cual es la diferencia
+
+```js
+//Synchronous
+[1, 2, 3, 4].forEach(function (i) {
+  console.log(i);
+});
+
+//Asynchronous
+
+function asyncForEach(array, cb) {
+  array.forEach(function () {
+    setTimeout(cb, 0);
+  });
+}
+
+asyncForEach([1, 2, 3, 4], function (i) {
+  console.log(i);
+});
+```
+
+- El primer bloque de código que se ejecute se quedará ahí
+  bloqueando la pila (call stack), **queda bloqueando el hilo**. Se ejecuta una vez por cada elemento
+  hasta que se complete
+
+![callstackbloq](./images/callstackbloq.png)
+
+- Mientras que en la versión Async, cierto va más lento, pero básicamente vamos a meter un puñado de callbacks y luego limpiamos el
+  callback queue. Si podremos ejecutarlo y hacer console.log()
+
+en este caso el console.log() es rápido por el beneficio de que sea asíncrono no es obvio, pero si tuviéramos un procesamiento lento por cada elemento del array
