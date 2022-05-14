@@ -405,3 +405,72 @@ asyncForEach([1, 2, 3, 4], function (i) {
   callback queue. Si podremos ejecutarlo y hacer console.log()
 
 en este caso el console.log() es rápido por el beneficio de que sea asíncrono no es obvio, pero si tuviéramos un procesamiento lento por cada elemento del array
+
+Asi que tengo un función de retraso que es lenta, digamos procesando async y sync
+
+```js
+//Synchronous
+[1, 2, 3, 4].forEach(function (i) {
+  console.log("processing sync");
+  delay();
+});
+
+//Asynchronous
+
+function asyncForEach(array, cb) {
+  array.forEach(function () {
+    setTimeout(cb, 0);
+  });
+}
+
+asyncForEach([1, 2, 3, 4], function (i) {
+  console.log("processing async", i);
+  delay();
+});
+```
+
+Vamos a simular el repintado o el renderizado en el navegador, básicamente el navegador está limitado por lo que hace javaScript, el navegador quiere volver a pintar la pantalla cada 16,6 milisegundos
+60 cuadros por segundo es lo ideal, Es lo mas rápido que intentara de repintar si lo dejan hacer.
+
+Pero está limitado en Javascript por varias razones, así que no puede realmente renderizar nada si no hay código en la pila (call stack) cierto.
+
+Digamos que el tipo de llamada del render es casi como un callback en si mismo, tiene que esperar que la cola de tareas callback queue este vacía. La diferencia es que el renderizado tiene mayor prioridad que nuestros callbacks cada 16 ms va a poner en cola un render esperará hasta que la pila esté vaciá y entonces hará el redibujado.
+
+Así que esto esta en cola renderizado solo simula un renderizado cada segundo, puedo renderizar por eso el prende y apaga el color verde
+
+![render-queue](./images/render-queue.png)
+
+Dónde... porque ahor amismo nuestro código no está haciendo nada.
+
+Si ejecuto el código, mientras recorremos este bucle síncrono lento a través del array.
+
+### Vemos que nuestro render está bloqueando, si está bloqueando no se puede seleccionar el texto en pantalla, no se puede hacer click y ver la respuesta, como el ejemplo que vimos antes
+
+delay() está bloqueando
+
+En este ejemplo, está bloqueando mientras ponemos en cola el setTimeout asíncrono que es relativamente rápido, pero en cierto modo, estamos dando al render una oportunidad entre cada elemento, por que lo pusimos en la cola asíncronamente para saltar allí y hacer el renderizado.
+
+Entonces este es una simulación de cómo funciona el renderizado.
+
+Pero que nos enseñan por qué la gente nos dice, oye no bloquees el bucle de eventos, te dicen que no te metas ese código tan lento en la pila porque si lo haces, el navegador no hará lo que debe hacer como crear una interfaz de usuario fluida y agradable. Es por eso que cuando procesamos imágenes o animaciones demasiadas cosas y demás.
+Si no tiene cuidado de como se mete ese codigo en la cola, va ir tan lento
+
+## Podemos ver un ejemplo con los scroll o barras de desplazamiento
+
+```js
+function animatedSomething() {
+  delay();
+}
+
+$.on("document", "scroll", animatedSomething);
+```
+
+estas barras generan un montón de eventos de desplazamiento en el DOM, hay muchas que se disparan, como 1 vez cada 16ms, si tengo un codigo como este.
+
+document.scroll -> animar algo o hacer algún trabajo.
+
+![document-scroll](./images/document-scroll.png)
+
+Si ejecuto este código, cuando me desplace se podrán en cola como miles de callbacks.
+
+Luego tiene que ir procesar cada uno de ellos, son sumamente lentos, no estás bloqueando la pila, solo estás inundando la cola de tareas, esto nos permite visualizar, espero lo que realmente sucede cuando se activan todos estos callbacks, hay forma de evitarlos, vamos poner todos esos eventos en cola pero vamos hacer el trabajo lento cada poco segundos o hasta que el usuario deje de desplazarse cierta cantidad de tiempo.
