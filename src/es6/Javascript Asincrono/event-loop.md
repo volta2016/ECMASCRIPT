@@ -18,12 +18,12 @@ Yo Tengo:
 - Event Loop
 - callback queue
 
-caracteristicas del lenguaje
+caracteristicas del lenguaje:
 
-single threaded
-non blocking
-asynchronous
-concurrent
+- single threaded
+- non blocking
+- asynchronous
+- concurrent
 
 Tengo un:
 
@@ -39,7 +39,7 @@ este es una imagen simplificada de lo que es el runtime en JS
 
 Es donde se produce la asignación de memoria y la pila de llamadas
 
-heap(asignación de memoria) - stack(pila de tareas o llamadas)
+heap (asignación de memoria) - stack (pila de tareas o llamadas)
 
 el V8 puede hacer varias cosas como:
 setTimeout, DOM y HTTP Request y verás que no están allí, no existen en
@@ -169,7 +169,7 @@ Los navegadores no nos dan solicitudes AJAX síncronas, las estamos imitando con
 **si lllamamos a foo.com por qué pasa esto?**
 no podemos hacer nada, hasta el botón de ejecutar no termina de renderizar el hecho de hacer click en él
 
-- el navegador está bloqueando, se ha colgado no puede hacer nada hasta completar las solicitudes, luego todo va mal porque cosas y me di cuenta que se ejecutan al terminar el proceso y me di cuenta de su acción ya finalizando y ni siquiera podría renderizarlo. No puedo hacer nada.
+- el navegador está bloqueando, se ha colgado no puede hacer nada hasta completar las solicitudes, luego todo va mal porque varias cosas y me di cuenta que se ejecutan al terminar el proceso y me di cuenta de su acción ya finalizando y ni siquiera podría renderizarlo. No puedo hacer nada.
 
 ![sincrono-callstack](./images/sincrono-callstack2.png)
 

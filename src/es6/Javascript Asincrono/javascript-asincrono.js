@@ -22,3 +22,21 @@ function uno() {
 
 uno();
 console.log('Fin');
+
+
+
+function resolAfter2Seconds() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log("calling");
+  const result = await resolAfter2Seconds(); //esto sería una promesa?
+  console.log(result);
+}
+
+asyncCall();

@@ -13,7 +13,7 @@ function saludar() {}
 
 ## Expresiones de función
 
-Cuando usamos expresión de función el nombre es opcional de alguna manera es hasta irrevelante
+Cuando usamos expresión de función el nombre es opcional de alguna manera es hasta irrelevante
 
 ```js
 let a = function () {};
