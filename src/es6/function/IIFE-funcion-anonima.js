@@ -14,3 +14,29 @@ Con esta forma de crear funciones anónimas no es de extrañar que además se pu
   console.log(dos);
   console.log(tres);
 })(1, 2, 3);
+
+/* 
+IFFE
+- Las expresiones de función ejecutadas inmediantamente (IIFE por
+  su sigla en inglés) son funciones que se ejecutan tan pronto como se definen
+
+- Es un patrón de diseño también conocido cómo función autoejecutable  
+*/
+
+(function () {
+  const sandia = "🍉";
+  console.log(sandia);
+})();
+
+(() => {
+  const sandia = "🍉";
+  console.log(sandia);
+})();
+
+/*
+TIP
+
+- La función se convierte en una expresión de función que es ejecutada inmediatamente. La variable dentro de la expresíon no puede ser accesada desde afuera.
+- Desventaja: No tenemos alcance de nuestras variables y se nos puede salir de las manos.
+Solución "Módulos"
+*/
