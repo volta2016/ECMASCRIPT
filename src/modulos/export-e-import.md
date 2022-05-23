@@ -57,3 +57,83 @@ console.log(kiwi);
 guinda();
 frutilla();
 ```
+
+## Alternativa 2
+
+```js
+const manzana = "🍎";
+const banana = "🍌";
+
+function guinda() {
+  console.log("🍒");
+}
+
+const frutilla = () => {
+  console.log("🍓");
+};
+
+export { manzana, banana, guinda, frutilla };
+```
+
+## export default
+
+- También hay un tipo de exportación llamado exportación predeterminada
+- 👀 **Solo se permite un exportación predeterminada por módulo**
+
+```js
+export default function () {
+  console.log("🍒");
+}
+
+import guinda from "./frutas.js";
+guinda();
+```
+
+## arrow function
+
+```js
+export default () => {
+  console.log("🍏");
+};
+
+//note que se puede utilizar cualquier nombre
+import appleGreen from "./frutas.js";
+
+appleGreen();
+```
+
+## export con alias
+
+- archivo frutas.js
+
+```js
+const manzana = "🍏";
+const banana = "🍌";
+
+function guinda() {
+  console.log("🍒");
+}
+
+export default () => {
+  console.log("🥭");
+};
+
+export { manzana, banana, guinda };
+```
+
+- archivo app.js
+
+```js
+import {
+  manzana as manazaVerde,
+  banana as platano,
+  guinda as cereza,
+} from "./frutas.js";
+
+import mango from "./frutas.js";
+
+console.log(manzanaVerde);
+console.log(platano);
+guinda();
+mango();
+```
