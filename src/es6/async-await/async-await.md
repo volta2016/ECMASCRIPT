@@ -95,7 +95,7 @@ consulta hacia un servidor, pero eso se procesa de manera asíncrona.
 
 Dentro del cuerpo de la función cada vez que realice una petición asíncrona
 puedo anteponer la palabra **await** -> eso lo quiere decir es que la siguiente
-linea de código va esperar a que esta termine a que esta termine y entonces
+línea de código va esperar a que esta termine a que esta termine y entonces
 yo puedo procesar el resultado como si fuera código síncrono.
 No tengo que manejar **then catch** nada de eso aquí lo que estoy haciendo es que el
 resultado de esta operación asíncrona se debe de guardar aquí en response
@@ -113,11 +113,97 @@ aquí lo que recibimos como resultado es un objeto response:
 
 [object Response]
 
+que pasa si yo le quito el await?
+que va imprimir el console.log
+
 ```js
 const leerRepos = async () => {
-  const response = await fetch("https://api.github.com/users/codigofacilito");
+  const response = fetch("https://api.github.com/users/codigofacilito");
   console.log(response);
 };
 
 leerRepos();
 ```
+
+no pasa nada simplemente retorna un objeto promesa
+[object Response] -> el objeto promesa simplemente es un intermediario al final
+de cuenta no estamos esperando una promesa, estamos esperando un resultado de esa
+promesa y con await de alguna manera podemos pensar que nos estamos saltando
+ese paso de recibir la promesa, espera que la promesa tenga un valor es resultado
+final esta expresión await.
+
+De otra manera podemos pensar que el resultado de una expresión await, es el resultado
+de una operación asíncrona no la promesa. Así que await funciona con promesas internamente
+pero la sintaxis como vemos aquí es mucho más parecida al código asíncrono que al manejo
+normal con promesas.
+
+Después esa respuesta todavía se tiene que transformar en json, leer los bytes
+y pasarlos a json y eso también es un tarea asíncrona, lo puedo colocar igual en una
+expresión await, va esperar de igual manera a que la operación asíncrona
+finalice para terminar la expresión en este caso lo guardamos en una variable json
+
+```js
+const leerRepos = async () => {
+  const response = await fetch("https://api.github.com/users/codigofacilito");
+  const json = await response.json();
+  console.log(json);
+  /*
+  fetch("https://api.github.com/users/codigofacilito");
+    .then(response => response.json)
+    .then(json => console.log(json));
+  */
+};
+
+leerRepos();
+```
+
+- tenemos abajo lo mismo pero con promesas es mucho más claro con async await
+  si quieres reintentar una promesas pues vuelves hacer el llamado de la operación
+  asíncrona
+
+- async await es como una capa de abstracción
+
+## Cómo manejamos el error ?
+
+con un bloque try catch
+
+```js
+const leerRepos = async () => {
+  try {
+    const response = await fetch("https://api.github.com/users/codigofacilito");
+    const json = await response.json();
+    console.log(json);
+  } catch (err) {
+    console.log(err);
+  }
+
+  /*
+  fetch("https://api.github.com/users/codigofacilito");
+    .then(response => response.json)
+    .then(json => console.log(json));
+  */
+};
+
+let result = leerRepos();
+console.log(result);[object Promise]
+```
+
+se ocupan 2 await es por que son 2 operaciones asíncronas distintas
+
+cualquier función asíncrona retorna ya sea explicita o implícitamente una promesa
+que quiere decir esto que si del cuerpo de la función retorna un objeto promise
+
+```js
+return new Promise();
+```
+
+este es el resultado de nuestra función asíncrona
+
+```js
+return json;
+```
+
+pero si retorna un objeto que no es una promesa en este caso un string lo
+que va hacer la función asíncrona en envolverlo en una Promesa y retornarlo
+de tal manera, independiente de que tu retornas una promesa o no ->
+las funciones asíncronas siempre retornan promesas
