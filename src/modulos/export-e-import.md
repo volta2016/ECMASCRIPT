@@ -134,6 +134,6 @@ import mango from "./frutas.js";
 
 console.log(manzanaVerde);
 console.log(platano);
-guinda();
+cereza();
 mango();
 ```
