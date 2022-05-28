@@ -1,0 +1,66 @@
+# Array y Object Destructuring
+
+Es lo que llamó por asignación por desestructuración y se puede
+entender cómo desempacar los elementos de un objeto o de un arreglo en elementos
+individuales.
+
+Para que nosotros podamos extraer los elementos de un arreglo utilizando esta
+sintaxis es la misma sintaxis de crear un arreglo pero a la izquierda de la asignacio
+
+```js
+//cómo puedo crear un arreglo
+let number = [10, 20];
+
+let [a, b] = number; //destructuring
+
+console.log(a); //10
+console.log(b); //20
+```
+
+estos se van asignar en el orden que aparecen en lado izquierdo, esto que quiere
+decir:
+elemento en la posición 0 -> se va a guardar en la variable a
+elemento en la posición 1 -> se va guardar en la variable b
+
+a y b son nombres arbitrarios y la forma en que JS los va asignar es el
+mismo que aparece en el arreglo.
+
+## Esto también se puede optimizar con objetos
+
+👀 Cuando esta en lado izquierdo de la asignación es desestructuración
+
+```js
+let object = { name: "Kyo", year: 29 };
+
+let { name, year } = object;
+console.log(name, year);
+```
+
+así es como podemos obtener un valor de un objeto, nada más un valor desempaquetarlo
+es el inverso de agrupar, desagrupar yo quiero tal cosa, en ese sentido, también
+nosotros podemos asignarle un nombre a un propiedad a una variable que tenga un nombre
+distinto
+
+```js
+let object = { name: "Kyo", year: 29 };
+
+let { nombre: userName } = object;
+console.log(userName);
+```
+
+La idea es que la sintaxis de definición de un arreglo y la sintaxis de definición
+de un arreglo aparece del lado izquierdo del operador del asignación es desestructuración,
+no estoy definiendo un nuevo arreglo y no estoy creando un objeto, estoy tomando elementos
+del arreglo y objeto que están a la derecha y guardandolo variable que aparecen del lado izquierdo
+en este caso según el orden.
+
+- Cuando son arreglo nos guiamos por el orden del arreglo para cada una de las
+  variables. Cuando el arreglo tenga más elemento yo puede obtener solo los que necesite
+
+```js
+let number = [1, 2, 3, 4];
+let four = number[3];
+console.log(four);
+```
+
+- Cuando son objetos nos guiamos por el nombre de la propiedad
