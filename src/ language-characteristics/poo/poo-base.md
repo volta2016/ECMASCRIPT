@@ -160,3 +160,143 @@ console.log(bango);
 ```
 
 ![class](./images/class.jpg)
+
+El <prototype> hace referencia al prototipo de Animales
+(que a su vez hace referencia al prototipo de Object).
+
+A partir de esto, podemos ver que el constructor define las
+características principales, mientras que todo lo que está
+fuera del constructor (canta() y baila()) son las características
+adicionales (prototipos).
+
+En segundo plano, utilizando el enfoque de la palabra clave **new,**
+lo anterior se traduce en:
+
+```js
+class Animales {
+  constructor(nombre, especie) {
+    this.nombre = nombre;
+    this.especie = especie;
+  }
+
+  Animales.prototype.canta() {
+    return `${this.nombre} puede cantar`;
+  }
+
+ Animales.prototype.baila() {
+    return `${this.nombre} puede bailar`;
+  }
+}
+
+let bango = new Animales("Bango", "Akita");
+```
+
+## Sub-clases
+
+Esta es una característica en **POO,** donde una clase hereda características de una clase padre, pero posee características adicionales que el padre no tiene.
+
+La idea aquí es, por ejemplo, decir que quieres crear una clase de Gatos. En lugar de crear la clase desde cero, indicando de nuevo las propiedades del nombre, la edad o la especie, heredaría esas propiedades de la clase padre Animales.
+
+Esta clase Gatos puede tener propiedades adicionales como el color de los bigotes. Veamos cómo se hacen las sub-clases con class.
+
+Aquí, necesitamos un padre del que herede la sub-clase. Examinemos el siguiente código:
+
+```js
+class Animals {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+
+  sing() {
+    return `${this.name} can sing`;
+  }
+  dance() {
+    return `${this.name} can sign`;
+  }
+}
+
+class Cat extends Animals {
+  constructor(name, year, mustacheColor) {
+    super(nombre, edad);
+    this.mustacheColor = mustacheColor;
+  }
+
+  mustache() {
+    return `I have mustache color ${this.mustacheColor}`;
+  }
+}
+
+let amy = new Cat(¨Amy¨, 7, ¨brown¨)
+
+console.log(amy.canta());
+console.log(amy.bigotes());
+```
+
+Con lo anterior, obtenemos los siguientes resultados:
+
+```bash
+//Amy can sing
+//Amy can dance
+```
+
+![cat](./images/cat-class.jpg)
+
+Notarás que amy tiene una propiedad <prototype> que hace
+referencia al constructor Cat y obtiene acceso al método mustache().
+Esta propiedad <prototype> también tiene una propiedad <prototype>
+que hace referencia al constructor Animals obteniendo así acceso a sing()
+y dance().
+
+name y year son propiedades que existen en cada objeto creado
+a partir de este. Usando el enfoque del método Object.create, lo
+anterior se traduce en:
+
+```js
+function Animals(name, year) {
+  let newAnimal = Object.create(ConstructorAnimals);
+  newAnimal.name = name;
+  newAnimal.year = year;
+  return newAnimal;
+}
+
+let ConstructorAnimals = {
+  sing: function () {
+    return `${this.name} can sign`;
+  },
+  dance: function () {
+    return `${this.name} can dance`;
+  },
+};
+
+function Cats(name, year, colorMustaches) {
+  let newCat = Animals(name, year); //super
+  Object.setPrototypeOf(newCat, ConstructorCats);
+  newCat.colorMustaches = colorMustaches;
+  return newCat;
+}
+
+let ConstructorCats = {
+  mustaches() {
+    return `I have color mustaches ${this.colorMustaches}`;
+  },
+};
+
+Object.setPrototypeOf(ConstructorCats, ConstructorAnimals);
+const amy = Cats("Amy", 33, "violet");
+
+console.log(amy.sing()); //Amy can sign
+console.log(amy.mustaches()); //I have color mustaches violet
+```
+
+Object.setPrototypeOf es un método que toma dos argumentos: el objeto (primer argumento)
+y el prototipo deseado (segundo argumento).
+
+De lo anterior, la función **Animals** devuelve un objeto con
+**ConstructorAnimal** como prototipo. La función **Cats** devuelve
+un objeto con **ConstructorGato** como prototipo. **ConstructorCats,**
+por otro lado, recibe un prototipo de **ConstructorAnimal.**
+
+Por lo tanto, los animales comunes solo tienen acceso al
+ConstructorAnimal, pero los Cats tienen acceso al **ConstructorCats**
+y al **ConstructorAnimal.**
