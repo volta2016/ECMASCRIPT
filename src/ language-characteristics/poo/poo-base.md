@@ -204,33 +204,33 @@ Aquí, necesitamos un padre del que herede la sub-clase. Examinemos el siguiente
 ```js
 class Animals {
   constructor(name, year) {
-    this.name = name;
-    this.year = year;
+    this.name = name; //asigna la nueva prop
+    this.year = year; //asigna la nueva prop
   }
 
   sing() {
-    return `${this.name} can sing`;
+    return `${this.name} can sing`; //propiedades del protoype : Object
   }
   dance() {
-    return `${this.name} can sign`;
+    return `${this.name} can dance`; //propiedades del protoype : Object
   }
 }
 
 class Cat extends Animals {
   constructor(name, year, mustacheColor) {
-    super(nombre, edad);
-    this.mustacheColor = mustacheColor;
+    super(name, year); //hereda propiedades
+    this.mustacheColor = mustacheColor; //asigna la nueva prop
   }
 
   mustache() {
-    return `I have mustache color ${this.mustacheColor}`;
+    return `I have mustache color ${this.mustacheColor}`; //propiedades del protoype : Object
   }
 }
 
-let amy = new Cat(¨Amy¨, 7, ¨brown¨)
+let amy = new Cat("Amy", 7, "Brown"); //instancia del objeto que extiende de class Animals
 
-console.log(amy.canta());
-console.log(amy.bigotes());
+console.log(amy.sing());
+console.log(amy.dance());
 ```
 
 Con lo anterior, obtenemos los siguientes resultados:
