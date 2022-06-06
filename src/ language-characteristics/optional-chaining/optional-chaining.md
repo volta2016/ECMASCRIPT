@@ -1,5 +1,7 @@
 # Optional chaining
 
+## Práctica
+
 Muchas veces has tenido que hacer esto
 
 ```js
