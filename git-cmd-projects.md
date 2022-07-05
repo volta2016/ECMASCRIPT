@@ -1,4 +1,4 @@
-## El primer cmd que vamos utilizar ppsicionados en la raiz de nuestro proyecto es:
+## El primer cmd que vamos utilizar posicionados en la raiz de nuestro proyecto es:
 
 **git init**
 
