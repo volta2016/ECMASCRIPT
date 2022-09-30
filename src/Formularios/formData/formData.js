@@ -1,6 +1,7 @@
 const formulario = document.querySelector("#formulario");
-const userName = document.getElementById("userName");
+const userNameA = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
+//console.log(formulario, userName, userEmail);
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
