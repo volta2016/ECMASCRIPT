@@ -108,7 +108,7 @@ En un programa diseñado de manera funcional, buscamos tener un core de funcione
 con la lógica de negocio, y en el exterior las tareas que finalmente producen efectos
 secundarios.
 
-![setItem](./images/diseno-programa-funcional.jpg)
+![diseno-programa-funcional](./images/diseno-programa-funcional.jpg)
 
 En el centro tenemos toda la lógica de negocio con funciones puras.
 
@@ -183,3 +183,18 @@ let repos = obtenerRepos().then(function (repos) {
   imprimirRepos(resposName);
 });
 ```
+
+Esto produjo más código, no pasa nada, producir más código, no necesariamente es señal de mal
+código, a veces más código es mejor, simplemente tiene que ser expresivo y mantenible
+
+- Una función pura tiene que ser determinista **(con los mismos argumentos siempre entregue el
+  mismo resultado eso es lo que la hace determinista)**
+- Aunque yo no sepa el detalle de la función, siempre va a devolver el mismo resultado, por ejemplo 20
+  un número
+- Si corres la función con **X**, mañana con los mismos argumentos te tiene que devolver lo mismo
+- Cuando tiene efecto secundario eso determinista ya no se puede aplicar
+
+Predecible no quiere decir que yo de ante mano sé qué resultado va a tener, sino que siempre
+va a hacer el mismo resultado si yo lo mando con los mismos argumento, lo único que puedo
+predecir de una función determinista es que si la mando con los mismos argumentos entrega el mismo
+resultado.
