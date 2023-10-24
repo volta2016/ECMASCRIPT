@@ -33,8 +33,7 @@ Promise.all([
 
 Promise.allSettled([
   Promise.resolve(13),
-  Promise.reject(new Error("
-  ")),
+  Promise.reject(new Error("Error reject")),
   new Promise((resolve) => setTimeout(() => resolve(26), 100)),
 ]).then((values) => {
   const [
