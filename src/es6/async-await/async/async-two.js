@@ -1,4 +1,4 @@
-/* The people think that must apply await before the fetch, it doesn't have to because you can mix promises with async await. */
+/* People think they must use 'await' before 'fetch', but it's not necessary because you can mix promises with async/awai */
 
 async function fetchCategories({ types }) {
   return fetch("").then((response) => response.json());
@@ -11,9 +11,7 @@ async function fetchPosts({ limit }) {
 async function app() {
   const categories = await fetchCategories({ types: ["movies"] }); //10s
   const post = await fetchPosts({ limit: 5 }); //5s
-
-  //15s
-}
+} //15s
 
 Promise.all([
   Promise.resolve(13),
