@@ -73,9 +73,9 @@ we won't exponencial and facotrial
 
 // O(1) - Constant time
   
-function sayHi(n: string):  string{
-    return `Hi ${n}`  
-}
+// function sayHi(n: string):  string{
+//     return `Hi ${n}`  
+// }
 // O(1):
 
 // The algorithm performs a constant amount of work, regardless of the size of the input.
@@ -120,7 +120,7 @@ const targetIndex = binarySearch(arr, 6);
 console.log(targetIndex); 
 
 
-// In binary search, the algorithm continually divides the search interval in half until the target element is found or the search interval becomes empty. With each iteration, the algorithm discards half of the search space based on a comparison with the middle element of the current interval.
+// In binary search, the algorithm continually divides the search interval in half until the target element is found or the search interval becomes empty. With each iteration, the algorithm discards half of the search space based on a comparison with the middle element of the current interval. Is igual a findIndex in JS
 
 // Here's why it's O(log N):
 
@@ -128,3 +128,22 @@ console.log(targetIndex);
 // This halving process continues until the search space is reduced to a single element or the target is found.
 // Since the search space is halved with each iteration, the number of iterations required to reach the target element grows logarithmically with the size of the input array.
 // Thus, the time complexity of binary search is O(log N) on average.
+
+//O(N) - Linear time
+
+function sumNumber(n: number): number {
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    sum += 1
+  }
+  return sum
+}
+
+const resultnumber = sumNumber(2)
+console.log(resultnumber);
+
+// - The algorithm iterates over the input array once, performing a constant amount of work for each element.
+// - The number of iterations is directly proportional to the size of the input array.
+// - As the input size increases, the number of steps needed to complete the algorithm grows linearly.
+
+// Therefore, the time complexity of the algorithm is O(N) in the worst-case scenario.
