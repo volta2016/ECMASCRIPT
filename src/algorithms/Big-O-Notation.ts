@@ -147,3 +147,43 @@ console.log(resultnumber);
 // - As the input size increases, the number of steps needed to complete the algorithm grows linearly.
 
 // Therefore, the time complexity of the algorithm is O(N) in the worst-case scenario.
+
+// Having the following array
+const arr2 = [5, 3, 8, 4, 2, 1, 9, 7, 6];
+
+// We want to sort the array using the quick sort algorithm
+
+function quickSort(arr: number[]): number[] {
+  // First we check if the array has only one element or no elements
+  if (arr.length <= 1) {
+    return arr;
+  }
+  // We get the pivot as the last element of the array, the pivot is the element we are going to compare the rest of the elements with
+  const pivot = arr[arr.length - 1];//position in the last element
+
+  const left: number[] = [];
+  const right: number[] = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    // If the element is less than the pivot, we add it to the left array
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      // If the element is greater than the pivot, we add it to the right array
+      right.push(arr[i]);
+    }
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+// Call the function and log the result
+console.log(quickSort(arr2));
+
+
+// Here's why it's O(N log N):
+
+// The algorithm partitions the array into two subarrays based on a pivot element and recursively sorts these subarrays.
+// Each partitioning step involves iterating over the entire array once, which takes O(N) time. However, the array is typically divided in a way that the size of the subarrays reduces with each recursive call. This results in a time complexity of O(N log N) on average.
+
+
