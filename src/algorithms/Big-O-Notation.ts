@@ -187,3 +187,41 @@ console.log(quickSort(arr2));
 // Each partitioning step involves iterating over the entire array once, which takes O(N) time. However, the array is typically divided in a way that the size of the subarrays reduces with each recursive call. This results in a time complexity of O(N log N) on average.
 
 
+//O(N^2) - Quadratic time
+
+// having the following array
+const arr3 = [5, 3, 8, 4, 2, 1, 9, 7, 6];
+
+// we want to sort the array using the bubble sort algorithm
+function bubbleSort(arr: number[]): number[] {
+  // we iterate through the array
+    for (let i = 0; i < arr.length; i++) {
+
+      // we iterate through the array again
+      for (let j = 0; j < arr.length - 1; j++) {
+
+        // we compare adjacent elements and swap them if they are in the wrong order
+        if (arr[j] > arr[j + 1]) {
+          
+          // we swap the elements
+          const temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+    return arr;
+}
+
+
+console.log(bubbleSort(arr3));
+
+// Here's why it's O(N^2):
+
+// - Bubble sort works by repeatedly stepping through the list, comparing adjacent elements, and swapping them if they are in the wrong order.
+// - In the worst-case scenario, where the array is in reverse sorted order, bubble sort will need to make N passes through the array, each pass requiring N-1 comparisons and swaps.
+// - This results in a total of N * (N-1) comparisons and swaps, which simplifies to O(N^2) in terms of time complexity.
+
+
+
+
