@@ -1,0 +1,20 @@
+{
+  "name": "pootesting",
+  "version": "1.0.0",
+  "description": "A Node.js project for tester - QA automation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No test specified\" && exit 1"
+  },
+  "author": "Giovanni Volta",
+  "license": "MIT",
+  "keywords": [
+    "nodejs",
+    "poo",
+    "javascript",
+    "project"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
