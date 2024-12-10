@@ -19,11 +19,11 @@ Vamos analizandoo código
 
 ```js
 let names = {
-  firstName: "Kyo",
-  lastName: "Rioku",
+  firstName: 'Kyo',
+  lastName: 'Rioku',
 };
 console.log(names.firstName);
-console.log(names.hasOwnProperty("secondName"));
+console.log(names.hasOwnProperty('secondName'));
 // Resultado esperado:
 // Kyo
 // false
@@ -74,11 +74,11 @@ function Perro(nombre, edad) {
 
 let ObjetoConstructor = {
   habla: function () {
-    return "¡Soy un perro!";
+    return '¡Soy un perro!';
   },
 };
 
-let firulais = Perro("Firulais", 9);
+let firulais = Perro('Firulais', 9);
 console.log(firulais);
 ```
 
@@ -100,10 +100,10 @@ function Perro(nombre, edad) {
 }
 
 Perro.prototype.habla = function () {
-  return "¡Soy un perro!";
+  return '¡Soy un perro!';
 };
 
-let bobby = new Perro("Bobby", 12);
+let bobby = new Perro('Bobby', 12);
 ```
 
 La propiedad <prototype> de bobby, es dirigida al prototipo de Perro.
@@ -155,7 +155,7 @@ class Animales {
   }
 }
 
-let bango = new Animales("Bango", "Akita");
+let bango = new Animales('Bango', 'Akita');
 console.log(bango);
 ```
 
@@ -227,7 +227,7 @@ class Cat extends Animals {
   }
 }
 
-let amy = new Cat("Amy", 7, "Brown"); //instancia del objeto que extiende de class Animals
+let amy = new Cat('Amy', 7, 'Brown'); //instancia del objeto que extiende de class Animals
 
 console.log(amy.sing());
 console.log(amy.dance());
@@ -283,7 +283,7 @@ let ConstructorCats = {
 };
 
 Object.setPrototypeOf(ConstructorCats, ConstructorAnimals);
-const amy = Cats("Amy", 33, "violet");
+const amy = Cats('Amy', 33, 'violet');
 
 console.log(amy.sing()); //Amy can sign
 console.log(amy.mustaches()); //I have color mustaches violet
@@ -300,3 +300,52 @@ por otro lado, recibe un prototipo de **ConstructorAnimal.**
 Por lo tanto, los animales comunes solo tienen acceso al
 ConstructorAnimal, pero los Cats tienen acceso al **ConstructorCats**
 y al **ConstructorAnimal.**
+
+## Propiedades Públicas
+
+Definición: Las propiedades públicas son accesibles desde cualquier lugar del código, ya sea dentro o fuera de la clase.
+Declaración: Por defecto, todas las propiedades de una clase son públicas, a menos que se declaren explícitamente como privadas.
+Uso: Se utilizan cuando se desea permitir acceso sin restricciones a la propiedad.
+Sintaxis: Se declaran normalmente, sin usar el prefijo #.
+Ejemplo:
+
+```javascript
+class Ejemplo {
+  propiedadPublica = 'Soy pública'; // Propiedad pública
+
+  mostrarPropiedadPublica() {
+    console.log(this.propiedadPublica); // Accesible dentro de la clase
+  }
+}
+
+const ejemplo = new Ejemplo();
+console.log(ejemplo.propiedadPublica); // Accesible fuera de la clase
+```
+
+## Propiedades Privadas
+
+Definición: Las propiedades privadas solo son accesibles dentro de la clase en la que se definen. Están ocultas para cualquier acceso externo.
+Declaración: Se definen usando el prefijo #.
+Uso: Se utilizan cuando quieres restringir el acceso y evitar que las propiedades sean modificadas desde fuera de la clase.
+Sintaxis: Llevan el prefijo # antes del nombre de la propiedad.
+Ejemplo:
+
+```javascript
+class Ejemplo {
+  #propiedadPrivada = 'Soy privada'; // Propiedad privada
+
+  mostrarPropiedadPrivada() {
+    console.log(this.#propiedadPrivada); // Accesible dentro de la clase
+  }
+}
+
+const ejemplo = new Ejemplo();
+console.log(ejemplo.#propiedadPrivada); // Error: No es accesible fuera de la clase
+```
+
+## Resumen
+
+Tipo Accesibilidad Declaración
+
+Pública Accesible dentro y fuera de la clase. Sin prefijo (propiedad).
+Privada Solo accesible dentro de la clase donde se define. Con prefijo # (#propiedad).
