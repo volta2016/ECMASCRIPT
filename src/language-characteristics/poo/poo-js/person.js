@@ -1,4 +1,5 @@
 class Person {
+  //define the property of the object
   constructor(name, countryOfBirth) {
     this.name = name;
     this.countryOfBirth = countryOfBirth;
