@@ -349,3 +349,44 @@ Tipo Accesibilidad Declaración
 
 Pública Accesible dentro y fuera de la clase. Sin prefijo (propiedad).
 Privada Solo accesible dentro de la clase donde se define. Con prefijo # (#propiedad).
+
+Diferencia Clave entre Propiedades Públicas, Privadas y Estáticas
+Pública:
+Las propiedades públicas son accesibles desde cualquier lugar. Por ejemplo:
+
+```javascript
+class Course {
+  title = 'Default Title'; // Propiedad pública
+}
+const curso = new Course();
+console.log(curso.title); // Esto funciona
+```
+
+Privada (#):
+Solo puede ser usada o modificada dentro de la clase:
+
+```javascript
+class Course {
+  #title = 'Default Title';
+}
+const curso = new Course();
+console.log(curso.#title); // Error: No puedes acceder a esta propiedad privada
+```
+
+Estática (static):
+Pertenece a la clase y no a las instancias:
+
+```javascript
+class Course {
+  static courseCount = 0;
+}
+console.log(Course.courseCount); // Esto funciona
+const curso = new Course();
+console.log(curso.courseCount); // Error: No pertenece a la instancia
+```
+
+## Resumen
+
+Propiedad estática (static): Compartida entre todas las instancias de la clase
+y accesible directamente desde la clase. Ejemplo: Course.listedCourses.
+Propiedad privada (#): Protegida, solo accesible/modificable desde dentro de la clase. Ejemplo: #id.

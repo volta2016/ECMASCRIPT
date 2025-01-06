@@ -2,7 +2,9 @@ const Person = require('./Person');
 
 class Student extends Person {
   constructor(name, countryOfBirth, university, semester) {
-    super(name, countryOfBirth);
+    super();
+    this.name = name;
+    this.countryOfBirth = countryOfBirth;
     this.university = university;
     this.semester = semester;
   }

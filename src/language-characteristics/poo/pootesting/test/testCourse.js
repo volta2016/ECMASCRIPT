@@ -1,5 +1,7 @@
 const Course = require('../class/course');
 const CourseMaster = require('../logic/CourseMaster');
+const Student = require('../class/student');
+const StudentEnrollment = require('../logic/StudentEnrollment');
 
 // Create a new course
 let objCourse = new Course();
@@ -17,13 +19,13 @@ objCourse.chapters.push({ topic: 'Loops', duration: 15 });
 // when a create a static method is not neccesary that realize this
 // let businessLogic = new CourseMaster();
 
-if (objCourse.duration === 50) {
+if (objCourse.duration === 45) {
   console.log('succesfull');
 } else {
   console.log('fail');
 }
 
-// save theg course
+// save the course
 CourseMaster.saveCourse(objCourse);
 // Output: The course "Basic JavaScript" has been saved.
 
@@ -34,8 +36,19 @@ objCourse2.chapters.push({ topic: 'Asynchronous JS', duration: 30 });
 objCourse2.chapters.push({ topic: 'ES6+', duration: 25 });
 CourseMaster.saveCourse(objCourse2);
 
-console.log(`TOTAL OF COURSES: ${objCourse.chapters.length}`);
+console.log(`TOTAL OF COURSES: ${Course.listedCourses.length}`);
 console.log(`COURSE WITH ID 2: ${CourseMaster.searchById(2).title}`);
 
-// Mostrar todos los cursos guardados
+const objStudent = new Student(
+  'kyo Himura',
+  'Japan',
+  'Katon University',
+  '1º semester'
+);
+
+objStudent.showStudent();
+objStudent.greetings();
+StudentEnrollment.enrollStudent(1, objStudent);
+
+// Show all courses saved
 CourseMaster.displayCourses();

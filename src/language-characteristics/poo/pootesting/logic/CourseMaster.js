@@ -4,6 +4,7 @@ class CourseMaster {
   /**
    * Method that permits saving a course.
    * @param {Course} objCourse Course that you wish to save.
+   * can call the method saveCourse(objCourse) directly
    */
   static saveCourse(objCourse) {
     // Save the course in the static list
