@@ -138,3 +138,50 @@ for (const row of rows) {
 
 console.log(result);
 ```
+
+Step 62
+Because your function was no longer using the parameter, changing the argument did not affect it.
+
+Go ahead and remove the test declaration and return statement from your padRow function, so the function is empty again.
+
+```js
+const character = '#';
+const count = 8;
+const rows = [];
+
+function padRow(name) {
+  console.log('This works!');
+}
+
+const call = padRow('CamperChan');
+console.log(call);
+
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(character.repeat(i + 1));
+}
+
+let result = '';
+
+for (const row of rows) {
+  result = result + row + '\n';
+}
+
+console.log(result);
+```
+
+Step 63
+As expected, your function now returns undefined again. Your call variable is not necessary any more, so remove the call declaration and the console.log for the call variable.
+
+```js
+function padRow() {}
+padRow();
+```
+
+Step 64
+In order to know how to format a row, your padRow function will need to know which row number you are on, and how many rows in total are being generated.
+
+The best way to do this is by creating function parameters for them. Give your padRow function a rowNumber and rowCount parameter. Multiple parameters are separated by a comma:
+
+```js
+function name(first, second) {}
+```
