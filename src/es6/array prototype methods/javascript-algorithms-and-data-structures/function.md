@@ -183,5 +183,52 @@ In order to know how to format a row, your padRow function will need to know whi
 The best way to do this is by creating function parameters for them. Give your padRow function a rowNumber and rowCount parameter. Multiple parameters are separated by a comma:
 
 ```js
-function name(first, second) {}
+function padRow(rowNumber, rowCount) {}
+```
+
+Step 65
+Remember in an earlier step, you learned about return values. A function can return a value for your application to consume separately.
+
+In a function, the return keyword is used to specify a return value. For example, this function would return the value given to the first parameter:
+
+```js
+function padRow(rowNumber) {
+  return character.repeat(rowNumber);
+}
+
+console.log(padRow(9));
+```
+
+Step 66
+A function call allows you to actually use a function. You may not have been aware of it, but the methods like .push() that you have been using have been function calls.
+
+A function is called by referencing the function's name, and adding (). Here's how to call a test function:
+
+Example Code
+test();
+Replace the character.repeat(i + 1) in your .push() call with a function call for your padRow function. Do not add any arguments to it yet.
+
+```js
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(padRow());
+}
+```
+
+Step 67
+Your padRow function has two parameters which you defined. Values are provided to those parameters when a function is called.
+
+The values you provide to a function call are referred to as arguments, and you pass arguments to a function call. Here's a function call with "Hello" passed as an argument:
+
+Example Code
+test("Hello");
+Pass i + 1 and count as the arguments to your padRow call. Like parameters, arguments are separated by a comma.
+
+```js
+const character = '#';
+const count = 8;
+const rows = [];
+
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(padRow(i + 1, count));
+}
 ```
