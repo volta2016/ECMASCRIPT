@@ -232,3 +232,123 @@ for (let i = 0; i < count; i = i + 1) {
   rows.push(padRow(i + 1, count));
 }
 ```
+
+Step 68
+
+You should now see the same bunch of characters in your console. Your padRow function is doing the exact same thing you were doing earlier, but now it's in a reusable section of its own.
+
+Use the addition operator to concatenate a single space " " to the beginning and end of your repeated character string.
+
+Remember that you can use the + operator to concatenate strings like this:
+
+Example Code
+" " + "string"
+
+```js
+const character = '#';
+
+function padRow() {
+  return ' ' + character + ' ';
+}
+```
+
+Step 69Passed
+Now it is time for a bit of math. Consider a three-row pyramid. If we want it centered, it would look something like:
+
+Example Code
+··#··
+·###·
+
+#####
+
+Empty spaces have been replaced with interpuncts, or middle dots, for readability. If you extrapolate the pattern, you can see that the spaces at the beginning and end of a row follow a pattern.
+
+Update your blank space strings to be repeated rowCount - rowNumber times.
+
+Open up the console to see the result.
+
+```js
+const character = '#';
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return (
+    ' '.repeat(rowCount - rowNumber) +
+    character.repeat(rowNumber) +
+    ' '.repeat(rowCount - rowNumber)
+  );
+}
+```
+
+Step 70
+You can pass full expressions as an argument. The function will receive the result of evaluating that expression. For example, these two function calls below would yield the same result. (Note that the order of operations rule PEMDAS—Parenthesis, Exponents, Multiplication, Division, Addition, Subtraction—applies):
+
+test(2 \* 3 + 1);
+test(7);
+
+```js
+const character = '#';
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return (
+    ' '.repeat(rowCount - rowNumber) +
+    character.repeat(2 * rowNumber - 1) +
+    ' '.repeat(rowCount - rowNumber)
+  );
+}
+
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(padRow(i + 1, count));
+}
+
+let result = '';
+
+for (const row of rows) {
+  result = result + row + '\n';
+}
+
+console.log(result);
+```
+
+Step 71
+Your pyramid generator now functions as expected. But this is an excellent opportunity to further explore the code you have written.
+
+The addition operator is not the only way to add values to a variable. The addition assignment operator can be used as shorthand to mean "take the original value of the variable, add this value, and assign the result back to the variable." For example, these two statements would yield the same result:
+
+Example Code
+a = a + 1;
+a += 1;
+
+Update your iteration statement in the for loop to use addition assignment.
+
+```js
+const character = '#';
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return (
+    ' '.repeat(rowCount - rowNumber) +
+    character.repeat(2 * rowNumber - 1) +
+    ' '.repeat(rowCount - rowNumber)
+  );
+}
+
+for (let i = 0; i < count; i += 1) {
+  rows.push(padRow(i + 1, count));
+}
+
+let result = '';
+
+for (const row of rows) {
+  result = result + row + '\n';
+}
+
+console.log(result);
+```
+
+Step 72
+You can also use the addition assignment operator to add a value to a variable.
