@@ -351,4 +351,65 @@ console.log(result);
 ```
 
 Step 72
-You can also use the addition assignment operator to add a value to a variable.
+Because you are only increasing i by 1, you can use the increment operator ++. This operator increases the value of a variable by 1, updating the assignment for that variable. For example, test would become 8 here:
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+
+for (let i = 0; i < count; i ++ 1) {
+  rows.push(padRow(i + 1, count));
+}
+
+let result = '';
+
+for (const row of rows) {
+  result = result + row + '\n';
+}
+
+console.log(result);
+```
+
+Step 73
+Rather than having to pass i + 1 to your padRow call, you could instead start your loop at 1. This would allow you to create a one-indexed loop.
+
+Update your iterator to start at 1 instead of 0.
+
+```
+for (let i = 1; i < count; i = i + 1) {
+  rows.push(padRow(i + 1, count));
+}
+```
+
+Step 74
+The pyramid looks a little funny now. Because you are starting the loop at 1 instead of 0, you do not need to add one to i when you pass it to padRow.
+
+Update the first argument of your padRow call to be i.
+
+```js
+for (let i = 1; i < count; i = i + 1) {
+  rows.push(padRow(i, count));
+}
+```
+
+Step 75
+Unfortunately, now the bottom of the pyramid has disappeared. This is because you have created another off-by-one error.
+
+Your original loop went for i values from 0 to 7, because count is 8 and your condition requires i to be less than count. Your loop is now running for i values from 1 to 7.
+
+Your loop needs to be updated to run when i is 8, too. Looking at your logic, this means your loop should run when i is less than or equal to count. You can use the less than or equal to operator <= for this.
+
+Update your loop condition to run while i is less than or equal to count.
+
+```js
+for (let i = 1; i <= count; i = i + 1) {
+  rows.push(padRow(i, count));
+}
+```
