@@ -413,3 +413,30 @@ for (let i = 1; i <= count; i = i + 1) {
   rows.push(padRow(i, count));
 }
 ```
+
+Step 76
+
+Comments can be helpful for explaining why your code takes a certain approach, or leaving to-do notes for your future self.
+
+In JavaScript, you can use // to leave a single-line comment in your code.
+
+Add a single-line comment above your for loop to remind yourself to change the code to a different kind of loop.
+
+```js
+//for (let i = 1; i <= count; i++) {
+//rows.push(padRow(i, count));
+//}
+```
+
+Step 77
+JavaScript also has support for multi-line comments. A multi-line comment starts with /_ and ends with _/.
+
+Unlike a single-line comment, a multi-line comment will encapsulate multiple lines.
+
+Use /_ and _/ to turn your current for loop, including the body, into a multi-line comment.
+
+```js
+/*for (let i = 1; i <= count; i++) {
+  rows.push(padRow(i, count));
+}*/
+```
