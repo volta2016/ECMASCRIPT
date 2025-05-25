@@ -459,3 +459,63 @@ if (true) {
   console.log('Condition is true');
 }
 ```
+
+Step 79
+You'll see the string printed in the console, because true is in fact true.
+
+Change the condition of your if statement to the boolean false.
+
+```js
+if (false) {
+  console.log('Condition is true');
+}
+```
+
+Step 80
+Now the string is no longer printing, because false is not true. But what about other values?
+
+Try changing the condition to the string "false".
+
+```js
+if ('false') {
+  console.log('Condition is true');
+}
+```
+
+Step 81
+The text has appeared again! This is because "false" is a string, which when evaluated to a boolean becomes true. This means "false" is a truthy value.
+
+A truthy value is a value that is considered true when evaluated as a boolean. Most of the values you encounter in JavaScript will be truthy.
+
+A falsy value is the opposite - a value considered false when evaluated as a boolean. JavaScript has a defined list of falsy values. Some of them include false, 0, "", null, undefined, and NaN.
+
+Try changing your if condition to an empty string "", which is a falsy value.
+
+```js
+if ('') {
+  console.log('Condition is true');
+}
+```
+
+Step 82
+The text is gone again! Empty strings evaluate to false, making them a falsy value. You will learn more about truthy and falsy values in future projects.
+
+In addition to if statements, JavaScript also has else if statements. else if statements allow you to check multiple conditions in a single block of code.
+
+Here is the syntax for an else if statement:
+
+```js
+if (condition1) {
+  // code to run if condition1 is true
+} else if (condition2) {
+  // code to run if condition2 is true
+} else if (condition3) {
+  // code to run if condition3 is true
+}
+```
+
+If the first condition is false, JavaScript will check the next condition in the chain. If the second condition is false, JavaScript will check the third condition, and so on.
+
+Below your if statement, add an else if statement that checks if 5 is less than 10. Then inside the body of the else if statement, log the string "5 is less than 10" to the console.
+
+Check the console to see the results.
