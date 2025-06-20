@@ -519,3 +519,46 @@ If the first condition is false, JavaScript will check the next condition in the
 Below your if statement, add an else if statement that checks if 5 is less than 10. Then inside the body of the else if statement, log the string "5 is less than 10" to the console.
 
 Check the console to see the results.
+
+Step 83
+Sometimes you will want to run different code when all of the if...else if conditions are false. You can do this by adding an else block.
+
+An else block will only evaluate if the conditions in the if and else if blocks are not met.
+
+Here the else block is added to the else if block.
+
+```js
+if (condition) {
+  // this code will run if condition is true
+} else if (condition2) {
+  // this code will run if the first condition is false
+} else {
+  // this code will run
+  // if the first and second conditions are false
+}
+```
+
+Add an else block to the else if block. Inside the else block, log the string "This is the else block" to the console.
+
+To see the results in the console, you can manually change the < in the else if statement to >. That will make the condition false and the else block will run.
+
+```js
+if ('') {
+  console.log('Condition is true');
+} else if (5 > 10) {
+  console.log('5 is less than 10');
+} else {
+  console.log('This is the else block');
+}
+```
+
+## Step 84
+
+Now that you have practiced working with if...else if...else statements, you can remove them from your code.
+
+Once you complete that, use let to declare a continueLoop variable and assign it the boolean false. Then use let to declare a done variable and assign it the value 0.
+
+```js
+let continueLoop = false;
+let done = 0;
+```
