@@ -562,3 +562,83 @@ Once you complete that, use let to declare a continueLoop variable and assign it
 let continueLoop = false;
 let done = 0;
 ```
+
+Step 85
+
+A while loop will run over and over again until the condition specified is no longer true. It has the following syntax:
+
+Example Code
+
+```js
+while (condition) {
+  logic;
+}
+```
+
+Use that syntax to declare a while loop with continueLoop as the condition. The body should be empty.
+
+```js
+let continueLoop = false;
+let done = 0;
+
+while (continueLoop) {}
+```
+
+Step 86
+Right now, if you change continueLoop to true, your while loop will run forever. This is called an infinite loop, and you should be careful to avoid these. An infinite loop can lock up your system, requiring a full restart to escape.
+
+To avoid this, start by using the increment operator to increase the value of the done variable inside your loop.
+
+```js
+let continueLoop = false;
+let done = 0;
+
+while (continueLoop) {
+  done = done++;
+}
+```
+
+Step 87
+
+The equality operator == is used to check if two values are equal. To compare two values, you'd use a statement like value == 8.
+
+Below done++ inside your loop, add an if statement. The statement should check if done is equal to count using the equality operator.
+
+```js
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++; // increment done
+  if (done == count) {
+    continueLoop = false; // stop loop
+  }
+}
+```
+
+Step 88
+
+Step 88
+The equality operator can lead to some strange behavior in JavaScript. For example, "0" == 0 is true, even though one is a string and one is a number.
+
+The strict equality operator === is used to check if two values are equal and share the same type. As a general rule, this is the equality operator you should always use. With the strict equality operator, "0" === 0 becomes false, because while they might have the same value of zero, they are not of the same type.
+
+Update your done == count condition to use the strict equality operator.
+
+````js
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++; // increment done
+  if (done === count) {
+    continueLoop = false; // stop loop
+  }
+}
+```
+
+Step 89
+
+````
