@@ -641,4 +641,46 @@ while (continueLoop) {
 
 Step 89
 
+When done has reached the value of count, we want the loop to stop executing.
+Inside your if body, assign the boolean false to your continueLoop variable.
+
+```js
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++;
+  if (done === count) {
+    continueLoop = false;
+  }
+}
+```
+
+Step 90
+To make your pyramid generate again, push the result of calling padRow with done and count as the arguments to your rows array, similar to what you did in your first loop.
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++;
+  if (done === count) {
+    continueLoop = false;
+  }
+  rows.push(padRow(done, count));
+}
+```
+
 ````
