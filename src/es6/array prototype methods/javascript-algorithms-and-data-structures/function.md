@@ -683,4 +683,107 @@ while (continueLoop) {
 }
 ```
 
+Step 91
+
+Step 91
+The strict inequality operator !== allows you to check if two values are not equal, or do not have the same type. The syntax is similar to the equality operator: value !== 4.
+
+Currently the while loop runs only if continueLoop is true. Update the while loop condition to check if done is not equal to count.
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++;
+  if (done !== count) {
+    continueLoop = false;
+  }
+  rows.push(padRow(done, count));
+}
+```
+
+Step 92
+Since you have moved the comparison into the while condition, you can remove your entire if statement.
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+let count = 5;
+let continueLoop = true;
+let done = 0;
+
+while (continueLoop) {
+  done++;
+  rows.push(padRow(done, count));
+}
+```
+
+Step 93
+
+Your loop is no longer relying on the continueLoop variable. This makes the variable an unused declaration. Generally, you want to avoid unused declarations to prevent future confusion.
+
+Remove your continueLoop variable.
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+let count = 5;
+let done = 0;
+
+while (true) {
+  done++;
+  rows.push(padRow(done, count));
+}
+```
+
+Step 94
+Your pyramid generator is still working. However, it could be possible to end up with an infinite loop again.
+
+Because you are only checking if done is not equal to count, if done were to be larger than count your loop would go on forever.
+
+Update your loop's condition to check if done is less than or equal to count.
+
+```js
+const character = "#";
+const count = 8;
+const rows = [];
+
+function padRow(rowNumber, rowCount) {
+  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+}
+
+
+let count = 5;
+let done = 0;
+
+while (done <= count) {
+  done++;
+  rows.push(padRow(done, count));
+}
+```
 ````
